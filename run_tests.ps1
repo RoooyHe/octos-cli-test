@@ -1,27 +1,281 @@
-# Octos CLI 自动化测试脚本
-# 用于 Windows PowerShell 环境
+# Octos CLI Automated Test Script
+# For Windows PowerShell
 
 param(
     [string]$OctosBinary = "octos",
-    [string]$OutputDir = "test-results"
+    [string]$OutputDir = "test-results",
+    [string]$ConfigFile = "",
+    [switch]$Verbose
 )
 
+$ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+if ($ConfigFile -eq "")
+{
+    $ConfigFile = Join-Path $ScriptDir "test_cases.json"
+}
+
 $ErrorActionPreference = "Continue"
+$Script:Cancelled = $false
+
+# Ctrl+C Handler
+$host.UI.RawUI.FlushInputBuffer()
+$script:Cancelled = $false
+$global:originalCancelToken = $null
+
+function Stop-TestRun
+{
+    $Script:Cancelled = $true
+    Write-Host "`n[CANCELLED] Test run cancelled by user" -ForegroundColor Yellow
+    Write-Log "[CANCELLED] Test run cancelled by user"
+
+    # Kill any running processes
+    Get-Process | Where-Object { $_.CommandLine -like "*octos*" } | ForEach-Object {
+        try
+        {
+            $_.Kill()
+        }
+        catch
+        {
+        }
+    }
+
+    # Generate partial report
+    if ($Script:Results.Count -gt 0)
+    {
+        $reportPath = "$OutputDir\CLI_TEST_REPORT_CANCELLED_$( Get-Date -Format 'yyyyMMdd_HHmmss' ).md"
+        $partialReport = @()
+        $partialReport += "# Octos CLI Test - Cancelled"
+        $partialReport += ""
+        $partialReport += "Test run was cancelled. Partial results:"
+        $partialReport += ""
+        $partialReport += "| ID | Category | Test Name | Status |"
+        $partialReport += "|----|----------|-----------|--------|"
+        foreach ($r in $Script:Results)
+        {
+            $partialReport += "| $( $r.TestId ) | $( $r.Category ) | $( $r.TestName ) | $( $r.Status ) |"
+        }
+        $partialReport += "" | Out-File -FilePath $reportPath -Encoding UTF8
+        Write-Host "Partial report: $reportPath" -ForegroundColor Yellow
+    }
+
+    exit 1
+}
+
+# Register Ctrl+C handler
+[Console]::TreatControlCAsInput = $false
+if ($Host.Name -eq "ConsoleHost")
+{
+    $script:CancelHandler = {
+        Stop-TestRun
+    }
+    [Console]::CancelKeyPress += $script:CancelHandler
+}
 $TestDate = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-$ReportDate = Get-Date -Format "yyyy-MM-dd"
+$ReportDate = Get-Date -Format "yyyy-MM-dd_HHmm"
 $Script:Passed = 0
 $Script:Failed = 0
 $Script:Skipped = 0
 $Script:Total = 0
 $Script:Results = @()
 
-if (-not (Test-Path $OutputDir)) {
+# Setup directories
+if (-not (Test-Path $OutputDir))
+{
     New-Item -ItemType Directory -Path $OutputDir -Force | Out-Null
 }
 
-function Get-OctoOutput {
+$logsDir = "$OutputDir\logs"
+if (-not (Test-Path $logsDir))
+{
+    New-Item -ItemType Directory -Path $logsDir -Force | Out-Null
+}
+
+$logFile = "$logsDir\test_$( Get-Date -Format 'yyyyMMdd_HHmm' ).log"
+
+function Write-Log
+{
+    param([string]$Message)
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    $logLine = "[$timestamp] $Message"
+    Add-Content -Path $logFile -Value $logLine -Encoding UTF8
+}
+
+function Write-VerboseLog
+{
+    param([string]$Message)
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    $logLine = "[$timestamp] $Message"
+    Add-Content -Path $logFile -Value $logLine -Encoding UTF8
+    if ($Verbose)
+    {
+        Write-Host $logLine -ForegroundColor Gray
+    }
+}
+
+function Load-TestCases
+{
+    param([string]$ConfigPath)
+
+    if (-not (Test-Path $ConfigPath))
+    {
+        Write-Host "[ERROR] Config file not found: $ConfigPath" -ForegroundColor Red
+        exit 1
+    }
+
+    Write-Host "Loading tests from: $ConfigPath" -ForegroundColor Cyan
+    Write-Log "Loading test configuration from: $ConfigPath"
+
+    $jsonContent = Get-Content -Path $ConfigPath -Raw -Encoding UTF8
+    $config = $jsonContent | ConvertFrom-Json
+
+    $tests = @()
+    foreach ($t in $config.tests)
+    {
+        $testObj = @{
+            Id = $t.id
+            Category = $t.category
+            Name = $t.name
+            Command = $t.command
+            Expected = $t.expected
+            Validation = if ($t.validation) { $t.validation } else { "contains" }
+            Timeout = if ($t.timeout) { [int]$t.timeout } else { 60 }
+            Type = if ($t.type) { $t.type } else { "cli" }
+            Path = if ($t.path) { $t.path } else { "" }
+            ShouldExist = if ($t.should_exist) { [bool]$t.should_exist } else { $true }
+        }
+        $tests += [PSCustomObject]$testObj
+    }
+
+    Write-Log "Loaded $($tests.Count) test cases"
+    return $tests
+}
+
+function Invoke-TestCase
+{
+    param(
+        [PSCustomObject]$Test,
+        [string]$TestDir,
+        [string]$TempDir
+    )
+
+    if ($Script:Cancelled)
+    {
+        return
+    }
+
+    $Script:Total++
+
+    $cmdArgs = $Test.Command
+    $cmdArgs = $cmdArgs.Replace("{testDir}", $TestDir)
+    $cmdArgs = $cmdArgs.Replace("{tempDir}", $TempDir)
+
+    if ($Test.Type -eq "file_check")
+    {
+        $path = $Test.Path.Replace("{testDir}", $TestDir).Replace("{tempDir}", $TempDir)
+        $path = $path.Replace("/", "\")
+
+        $exists = Test-Path $path
+        $passed = $exists -eq $Test.ShouldExist
+
+        if ($passed)
+        {
+            $Script:Passed++
+        }
+        else
+        {
+            $Script:Failed++
+        }
+
+        $actualMsg = if ($exists) { "Path exists: $path" } else { "Path not found: $path" }
+
+        $Script:Results += [PSCustomObject]@{
+            TestId = $Test.Id
+            Category = $Test.Category
+            TestName = $Test.Name
+            Args = "(file check)"
+            Expected = if ($Test.ShouldExist) { "exists" } else { "not exists" }
+            Actual = $actualMsg
+            FullOutput = $actualMsg
+            Status = if ($passed) { "PASS" } else { "FAIL" }
+            ExitCode = 0
+        }
+
+        Write-Log "[FILE CHECK] $path"
+        Write-Log "[STATUS] $( if ($passed) { 'PASS' } else { 'FAIL' } )"
+        Write-Log ""
+
+        $status = if ($passed) { "[PASS]" } else { "[FAIL]" }
+        $color = if ($passed) { "Green" } else { "Red" }
+        Write-Host "$status $( $Test.Id ) $( $Test.Name )" -ForegroundColor $color
+    }
+    else
+    {
+        $result = Get-OctoOutput -CmdArgs $cmdArgs -Timeout $Test.Timeout
+        $actual = $result.Stdout + $result.Stderr
+        $passed = $false
+
+        switch ($Test.Validation)
+        {
+            "contains" { $passed = $actual -like "*$($Test.Expected)*" }
+            "not_contains" { $passed = $actual -notlike "*$($Test.Expected)*" }
+            "exitcode" { $passed = $result.ExitCode -eq [int]$Test.Expected }
+        }
+
+        if ($passed)
+        {
+            $Script:Passed++
+        }
+        else
+        {
+            $Script:Failed++
+        }
+
+        $actualTruncated = $actual.Substring(0, [Math]::Min(200, $actual.Length)).Replace("`n", " ").Replace("`r", "")
+
+        $Script:Results += [PSCustomObject]@{
+            TestId = $Test.Id
+            Category = $Test.Category
+            TestName = $Test.Name
+            Args = $cmdArgs
+            Expected = $Test.Expected
+            Actual = $actualTruncated
+            FullOutput = $actual
+            Status = if ($passed) { "PASS" } else { "FAIL" }
+            ExitCode = $result.ExitCode
+        }
+
+        Write-Log "[EXEC] octos $cmdArgs"
+        Write-Log "[EXITCODE] $( $result.ExitCode )"
+        Write-Log "[STDOUT] $( $result.Stdout )"
+        if ($result.Stderr)
+        {
+            Write-Log "[STDERR] $( $result.Stderr )"
+        }
+        Write-Log "[STATUS] $( if ($passed) { 'PASS' } else { 'FAIL' } )"
+        Write-Log ""
+
+        $status = if ($passed) { "[PASS]" } else { "[FAIL]" }
+        $color = if ($passed) { "Green" } else { "Red" }
+        Write-Host "$status $( $Test.Id ) $( $Test.Name )" -ForegroundColor $color
+    }
+}
+
+function Get-OctoOutput
+{
     param([string]$CmdArgs, [int]$Timeout = 60)
-    try {
+
+    if ($Script:Cancelled)
+    {
+        return @{
+            ExitCode = -1
+            Stdout = ""
+            Stderr = "Test cancelled"
+        }
+    }
+
+    $proc = $null
+    try
+    {
         $psi = New-Object System.Diagnostics.ProcessStartInfo
         $psi.FileName = "cmd"
         $fullCmd = "/c `"`"$OctosBinary`" $CmdArgs`""
@@ -30,97 +284,71 @@ function Get-OctoOutput {
         $psi.RedirectStandardError = $true
         $psi.UseShellExecute = $false
         $psi.CreateNoWindow = $true
+        $psi.StandardOutputEncoding = [System.Text.Encoding]::UTF8
+        $psi.StandardErrorEncoding = [System.Text.Encoding]::UTF8
         $proc = [System.Diagnostics.Process]::Start($psi)
+
+        $stdout = ""
+        $stderr = ""
+        $exited = $proc.WaitForExit($Timeout * 1000)
+
+        if (-not $exited)
+        {
+            try
+            {
+                $proc.Kill($true)
+                $proc.WaitForExit(1000)
+            }
+            catch
+            {
+            }
+            return @{
+                ExitCode = -1
+                Stdout = ""
+                Stderr = "Timeout after $Timeout seconds"
+            }
+        }
+
         $stdout = $proc.StandardOutput.ReadToEnd()
         $stderr = $proc.StandardError.ReadToEnd()
-        $proc.WaitForExit($Timeout * 1000)
-        if (-not $proc.HasExited) {
-            $proc.Kill()
-        }
+
         return @{
             ExitCode = $proc.ExitCode
             Stdout = $stdout
             Stderr = $stderr
         }
     }
-    catch {
+    catch
+    {
+        if ($proc -and -not $proc.HasExited)
+        {
+            try
+            {
+                $proc.Kill()
+            }
+            catch
+            {
+            }
+        }
         return @{
             ExitCode = -1
             Stdout = ""
             Stderr = $_.Exception.Message
         }
     }
-}
-
-function Test-CLI {
-    param(
-        [string]$TestId,
-        [string]$Category,
-        [string]$TestName,
-        [string]$CmdArgs,
-        [string]$Expected,
-        [string]$Validation = "contains",
-        [int]$Timeout = 60
-    )
-    
-    $Script:Total++
-    $result = Get-OctoOutput -CmdArgs $CmdArgs -Timeout $Timeout
-    $actual = $result.Stdout + $result.Stderr
-    $passed = $false
-    
-    switch ($Validation) {
-        "contains" { $passed = $actual -like "*$Expected*" }
-        "not_contains" { $passed = $actual -notlike "*$Expected*" }
-        "exitcode" { $passed = $result.ExitCode -eq [int]$Expected }
+    finally
+    {
+        if ($proc -and -not $proc.HasExited)
+        {
+            try
+            {
+                $proc.Dispose()
+            }
+            catch
+            {
+            }
+        }
     }
-    
-    if ($passed) { $Script:Passed++ } else { $Script:Failed++ }
-    
-    $Script:Results += [PSCustomObject]@{
-        TestId = $TestId
-        Category = $Category
-        TestName = $TestName
-        Args = $CmdArgs
-        Expected = $Expected
-        Actual = $actual.Substring(0, [Math]::Min(200, $actual.Length)).Replace("`n", " ").Replace("`r", "")
-        Status = if ($passed) { "PASS" } else { "FAIL" }
-        ExitCode = $result.ExitCode
-    }
-    
-    $status = if ($passed) { "[PASS]" } else { "[FAIL]" }
-    $color = if ($passed) { "Green" } else { "Red" }
-    Write-Host "$status $TestId $TestName" -ForegroundColor $color
-}
-
-function Test-File {
-    param(
-        [string]$TestId,
-        [string]$Category,
-        [string]$TestName,
-        [string]$Path,
-        [bool]$ShouldExist = $true
-    )
-    
-    $Script:Total++
-    $exists = Test-Path $Path
-    $passed = $exists -eq $ShouldExist
-    
-    if ($passed) { $Script:Passed++ } else { $Script:Failed++ }
-    
-    $Script:Results += [PSCustomObject]@{
-        TestId = $TestId
-        Category = $Category
-        TestName = $TestName
-        Args = "(file check)"
-        Expected = if ($ShouldExist) { "exists" } else { "not exists" }
-        Actual = if ($exists) { "Path exists: $Path" } else { "Path not found: $Path" }
-        Status = if ($passed) { "PASS" } else { "FAIL" }
-        ExitCode = 0
-    }
-    
-    $status = if ($passed) { "[PASS]" } else { "[FAIL]" }
-    $color = if ($passed) { "Green" } else { "Red" }
-    Write-Host "$status $TestId $TestName" -ForegroundColor $color
 }
 
 Write-Host "========================================" -ForegroundColor Cyan
@@ -128,165 +356,113 @@ Write-Host "Octos CLI Automated Test" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "Test Time: $TestDate" -ForegroundColor Gray
 Write-Host "Binary: $OctosBinary" -ForegroundColor Gray
+if ($Verbose)
+{
+    Write-Host "Log File: $logFile" -ForegroundColor Gray
+}
 Write-Host ""
 
+Write-Log "========================================"
+Write-Log "Octos CLI Automated Test"
+Write-Log "========================================"
+Write-Log "Test Time: $TestDate"
+Write-Log "Binary: $OctosBinary"
+Write-Log "Verbose Mode: $Verbose"
+Write-Log ""
+
 # Check if binary exists
-$binaryPath = if (Test-Path $OctosBinary) { $OctosBinary } else { (Get-Command $OctosBinary -ErrorAction SilentlyContinue).Source }
-if (-not $binaryPath) {
+$binaryPath = if (Test-Path $OctosBinary)
+{
+    $OctosBinary
+}
+else
+{
+    (Get-Command $OctosBinary -ErrorAction SilentlyContinue).Source
+}
+if (-not $binaryPath)
+{
     Write-Host "[ERROR] Binary not found: $OctosBinary" -ForegroundColor Red
     Write-Host "Please run: cargo build --all-features" -ForegroundColor Yellow
+    Write-Log "[ERROR] Binary not found: $OctosBinary"
     exit 1
 }
 
 # Setup test workspace
 $testDir = "$env:TEMP\octos-cli-test"
-if (Test-Path $testDir) { Remove-Item -Recurse -Force $testDir }
+if (Test-Path $testDir)
+{
+    Remove-Item -Recurse -Force $testDir
+}
 New-Item -ItemType Directory -Path $testDir -Force | Out-Null
 Write-Host "Test workspace: $testDir" -ForegroundColor Gray
+Write-Log "Test workspace: $testDir"
 Write-Host ""
 
-# ========================================
-# 1. CLI 基础 (octos chat)
-# ========================================
-Write-Host "`n[1] CLI 基础 (octos chat)" -ForegroundColor Yellow
+$tempDir = "$env:TEMP\octos-cli-test-temp"
+if (-not (Test-Path $tempDir))
+{
+    New-Item -ItemType Directory -Path $tempDir -Force | Out-Null
+}
 
-Test-CLI -TestId "1.1" -Category "CLI基础" -TestName "help信息" -CmdArgs "--help" -Expected "chat"
-Test-CLI -TestId "1.2" -Category "CLI基础" -TestName "版本信息" -CmdArgs "--version" -Expected "octos"
-Test-CLI -TestId "1.3" -Category "CLI基础" -TestName "单消息模式" -CmdArgs "chat --message `"hello`" --no-retry" -Expected "hello" -Timeout 30
+$tests = Load-TestCases -ConfigPath $ConfigFile
 
-# ========================================
-# 2. 工具系统 (octos chat with tools)
-# ========================================
-Write-Host "`n[2] 工具系统" -ForegroundColor Yellow
+$currentCategory = ""
+foreach ($test in $tests)
+{
+    if ($Script:Cancelled)
+    {
+        break
+    }
 
-Test-CLI -TestId "2.1" -Category "工具系统" -TestName "单消息模式运行" -CmdArgs "chat --message `"echo hello`" --no-retry" -Expected "hello" -Timeout 30
+    if ($test.Category -ne $currentCategory)
+    {
+        $currentCategory = $test.Category
+        Write-Host "`n[$currentCategory]" -ForegroundColor Yellow
+        Write-Log "[SECTION] $currentCategory"
+    }
 
-# ========================================
-# 3. 安全测试
-# ========================================
-Write-Host "`n[3] 安全测试" -ForegroundColor Yellow
+    Invoke-TestCase -Test $test -TestDir $testDir -TempDir $tempDir
+}
 
-Test-CLI -TestId "3.1" -Category "安全" -TestName "危险命令拒绝" -CmdArgs "chat --message `"run rm -rf /`" --no-retry" -Expected "reject" -Timeout 30
-
-# ========================================
-# 4. init 命令
-# ========================================
-Write-Host "`n[4] init 命令" -ForegroundColor Yellow
-
-Test-CLI -TestId "4.1" -Category "init" -TestName "help信息" -CmdArgs "init --help" -Expected "--defaults"
-Test-CLI -TestId "4.2" -Category "init" -TestName "默认初始化" -CmdArgs "init --defaults --cwd `"$testDir`"" -Expected "Created"
-Test-File -TestId "4.3" -Category "init" -TestName "config.json存在" -Path "$testDir\.octos\config.json"
-Test-CLI -TestId "4.4" -Category "init" -TestName "重新初始化提示" -CmdArgs "init --cwd `"$testDir`"" -Expected "already exists"
-
-# ========================================
-# 5. clean 命令
-# ========================================
-Write-Host "`n[5] clean 命令" -ForegroundColor Yellow
-
-Test-CLI -TestId "5.1" -Category "clean" -TestName "help信息" -CmdArgs "clean --help" -Expected "--all"
-Test-CLI -TestId "5.2" -Category "clean" -TestName "无.octos目录" -CmdArgs "clean --cwd `"$env:TEMP\no-octos-dir`"" -Expected "No .octos"
-Test-CLI -TestId "5.3" -Category "clean" -TestName "空目录" -CmdArgs "clean --cwd `"$testDir`"" -Expected "Nothing to clean"
-
-# ========================================
-# 6. status 命令
-# ========================================
-Write-Host "`n[6] status 命令" -ForegroundColor Yellow
-
-Test-CLI -TestId "6.1" -Category "status" -TestName "help信息" -CmdArgs "status --help" -Expected "status"
-Test-CLI -TestId "6.2" -Category "status" -TestName "显示状态" -CmdArgs "status --cwd `"$testDir`"" -Expected "provider"
-
-# ========================================
-# 7. completions 命令
-# ========================================
-Write-Host "`n[7] completions 命令" -ForegroundColor Yellow
-
-Test-CLI -TestId "7.1" -Category "completions" -TestName "help信息" -CmdArgs "completions --help" -Expected "bash"
-Test-CLI -TestId "7.2" -Category "completions" -TestName "bash补全" -CmdArgs "completions bash" -Expected "_octos"
-Test-CLI -TestId "7.3" -Category "completions" -TestName "zsh补全" -CmdArgs "completions zsh" -Expected "compdef"
-Test-CLI -TestId "7.4" -Category "completions" -TestName "fish补全" -CmdArgs "completions fish" -Expected "complete"
-Test-CLI -TestId "7.5" -Category "completions" -TestName "powershell补全" -CmdArgs "completions powershell" -Expected "Register-ArgumentCompleter"
-Test-CLI -TestId "7.6" -Category "completions" -TestName "无效shell" -CmdArgs "completions invalid-shell" -Expected "error"
-
-# ========================================
-# 8. skills 命令
-# ========================================
-Write-Host "`n[8] skills 命令" -ForegroundColor Yellow
-
-Test-CLI -TestId "8.1" -Category "skills" -TestName "help信息" -CmdArgs "skills --help" -Expected "list"
-Test-CLI -TestId "8.2" -Category "skills" -TestName "列出技能" -CmdArgs "skills list" -Expected "Installed Skills"
-Test-CLI -TestId "8.3" -Category "skills" -TestName "搜索技能" -CmdArgs "skills search mofa" -Expected "mofa"
-Test-CLI -TestId "8.4" -Category "skills" -TestName "搜索无结果" -CmdArgs "skills search xyznonexistent99" -Expected "No packages"
-Test-CLI -TestId "8.5" -Category "skills" -TestName "移除不存在的技能" -CmdArgs "skills remove nonexistent-skill-xyz" -Expected "not found"
-
-# ========================================
-# 9. auth 命令
-# ========================================
-Write-Host "`n[9] auth 命令" -ForegroundColor Yellow
-
-Test-CLI -TestId "9.1" -Category "auth" -TestName "help信息" -CmdArgs "auth --help" -Expected "login"
-Test-CLI -TestId "9.2" -Category "auth" -TestName "auth状态" -CmdArgs "auth status" -Expected "Not logged in"
-
-# ========================================
-# 10. channels 命令
-# ========================================
-Write-Host "`n[10] channels 命令" -ForegroundColor Yellow
-
-Test-CLI -TestId "10.1" -Category "channels" -TestName "help信息" -CmdArgs "channels --help" -Expected "channels"
-Test-CLI -TestId "10.2" -Category "channels" -TestName "channels状态" -CmdArgs "channels status" -Expected "gateway"
-
-# ========================================
-# 11. cron 命令
-# ========================================
-Write-Host "`n[11] cron 命令" -ForegroundColor Yellow
-
-Test-CLI -TestId "11.1" -Category "cron" -TestName "help信息" -CmdArgs "cron --help" -Expected "list"
-Test-CLI -TestId "11.2" -Category "cron" -TestName "cron列表" -CmdArgs "cron list" -Expected "No scheduled"
-
-# ========================================
-# 12. chat 命令
-# ========================================
-Write-Host "`n[12] chat 命令" -ForegroundColor Yellow
-
-Test-CLI -TestId "12.1" -Category "chat" -TestName "help信息" -CmdArgs "chat --help" -Expected "--model"
-
-# ========================================
-# 13. gateway 命令
-# ========================================
-Write-Host "`n[13] gateway 命令" -ForegroundColor Yellow
-
-Test-CLI -TestId "13.1" -Category "gateway" -TestName "help信息" -CmdArgs "gateway --help" -Expected "gateway"
-
-# ========================================
-# 14. serve 命令 (需要 api feature)
-# ========================================
-Write-Host "`n[14] serve 命令" -ForegroundColor Yellow
-
-Test-CLI -TestId "14.1" -Category "serve" -TestName "help信息" -CmdArgs "serve --help" -Expected "--port"
-
-# ========================================
-# 15. docs 命令
-# ========================================
-Write-Host "`n[15] docs 命令" -ForegroundColor Yellow
-
-Test-CLI -TestId "15.1" -Category "docs" -TestName "help信息" -CmdArgs "docs --help" -Expected "docs"
+if (Test-Path $tempDir)
+{
+    Remove-Item -Recurse -Force $tempDir -ErrorAction SilentlyContinue
+}
 
 # ========================================
 # Generate Report
 # ========================================
 Write-Host "`n========================================" -ForegroundColor Cyan
 Write-Host "Generating Report..." -ForegroundColor Cyan
+Write-Log "========================================"
+Write-Log "Generating Report..."
 
 $reportPath = "$OutputDir\CLI_TEST_REPORT_$ReportDate.md"
-$passRate = if ($Script:Total -gt 0) { [math]::Round($Script:Passed / $Script:Total * 100, 1) } else { 0 }
+$passRate = if ($Script:Total -gt 0)
+{
+    [math]::Round($Script:Passed / $Script:Total * 100, 1)
+}
+else
+{
+    0
+}
 
 $grouped = $Script:Results | Group-Object Category
 $catStats = @()
-foreach ($g in $grouped) {
+foreach ($g in $grouped)
+{
     $cName = $g.Name
     $cTotal = $g.Count
     $cPassed = ($g.Group | Where-Object { $_.Status -eq "PASS" }).Count
     $cFailed = $cTotal - $cPassed
-    $cRate = if ($cTotal -gt 0) { [math]::Round($cPassed / $cTotal * 100, 0) } else { 0 }
+    $cRate = if ($cTotal -gt 0)
+    {
+        [math]::Round($cPassed / $cTotal * 100, 0)
+    }
+    else
+    {
+        0
+    }
     $catStats += [PSCustomObject]@{ Category = $cName; Total = $cTotal; Passed = $cPassed; Failed = $cFailed; Rate = $cRate }
 }
 
@@ -299,40 +475,51 @@ $reportLines += "| Item | Content |"
 $reportLines += "|------|---------|"
 $reportLines += "| Test Date | $TestDate |"
 $reportLines += "| Binary | $OctosBinary |"
-$reportLines += "| Total Tests | $($Script:Total) |"
-$reportLines += "| Passed | $($Script:Passed) |"
-$reportLines += "| Failed | $($Script:Failed) |"
+$reportLines += "| Total Tests | $( $Script:Total ) |"
+$reportLines += "| Passed | $( $Script:Passed ) |"
+$reportLines += "| Failed | $( $Script:Failed ) |"
 $reportLines += "| Pass Rate | $passRate% |"
+$reportLines += "| Log File | $logFile |"
 $reportLines += ""
 $reportLines += "## Summary by Category"
 $reportLines += ""
 $reportLines += "| Category | Total | Passed | Failed | Pass Rate |"
 $reportLines += "|----------|-------|--------|--------|-----------|"
-foreach ($stat in $catStats) {
-    $reportLines += "| $($stat.Category) | $($stat.Total) | $($stat.Passed) | $($stat.Failed) | $($stat.Rate)% |"
+foreach ($stat in $catStats)
+{
+    $reportLines += "| $( $stat.Category ) | $( $stat.Total ) | $( $stat.Passed ) | $( $stat.Failed ) | $( $stat.Rate )% |"
 }
 $reportLines += ""
 $reportLines += "## Detailed Test Results"
 $reportLines += ""
 $reportLines += "| ID | Category | Test Name | Args | Expected | Actual | Status |"
 $reportLines += "|----|----------|-----------|------|----------|--------|--------|"
-foreach ($r in $Script:Results) {
+foreach ($r in $Script:Results)
+{
     $actualEscaped = $r.Actual -replace '"', '\"'
-    $reportLines += "| $($r.TestId) | $($r.Category) | $($r.TestName) | $($r.Args) | $($r.Expected) | $($actualEscaped) | $($r.Status) |"
+    $reportLines += "| $( $r.TestId ) | $( $r.Category ) | $( $r.TestName ) | $( $r.Args ) | $( $r.Expected ) | $( $actualEscaped ) | $( $r.Status ) |"
 }
 $reportLines += ""
 $reportLines += "## Failed Tests Detail"
 $reportLines += ""
 $failedTests = $Script:Results | Where-Object { $_.Status -eq "FAIL" }
-if ($failedTests.Count -eq 0) {
+if ($failedTests.Count -eq 0)
+{
     $reportLines += "All tests passed!"
-} else {
-    foreach ($t in $failedTests) {
-        $reportLines += "### $($t.TestId): $($t.TestName)"
+}
+else
+{
+    foreach ($t in $failedTests)
+    {
+        $reportLines += "### $( $t.TestId ): $( $t.TestName )"
         $reportLines += ""
-        $reportLines += "- **Args**: `"$($t.Args)`""
-        $reportLines += "- **Expected**: $($t.Expected)"
-        $reportLines += "- **Exit Code**: $($t.ExitCode)"
+        $reportLines += "- **Args**: `"$( $t.Args )`""
+        $reportLines += "- **Expected**: $( $t.Expected )"
+        $reportLines += "- **Exit Code**: $( $t.ExitCode )"
+        $reportLines += "- **Full Output**:"
+        $reportLines += "<pre>"
+        $reportLines += $t.FullOutput
+        $reportLines += "</pre>"
         $reportLines += ""
     }
 }
@@ -349,11 +536,47 @@ $reportContent = $reportLines -join "`n"
 $reportContent | Out-File -FilePath $reportPath -Encoding UTF8
 
 Write-Host "Report: $reportPath" -ForegroundColor Green
+Write-Host "Log: $logFile" -ForegroundColor Green
+Write-Log "Report saved to: $reportPath"
+Write-Log "Log saved to: $logFile"
 Write-Host ""
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "SUMMARY: Total=$($Script:Total) Passed=$($Script:Passed) Failed=$($Script:Failed) PassRate=$passRate%" -ForegroundColor $(if($passRate -ge 80){"Green"}elseif($passRate -ge 60){"Yellow"}else{"Red"})
+Write-Host "SUMMARY: Total=$( $Script:Total ) Passed=$( $Script:Passed ) Failed=$( $Script:Failed ) PassRate=$passRate%" -ForegroundColor $( if ($passRate -ge 80)
+{
+    "Green"
+}
+elseif($passRate -ge 60)
+{
+    "Yellow"
+}
+else
+{
+    "Red"
+} )
+Write-Log "========================================"
+Write-Log "SUMMARY: Total=$( $Script:Total ) Passed=$( $Script:Passed ) Failed=$( $Script:Failed ) PassRate=$passRate%"
 
 # Cleanup
-if (Test-Path $testDir) { Remove-Item -Recurse -Force $testDir -ErrorAction SilentlyContinue }
+if (Test-Path $testDir)
+{
+    Remove-Item -Recurse -Force $testDir -ErrorAction SilentlyContinue
+}
 
-exit $(if($Script:Failed -gt 0) { 1 } else { 0 })
+# Remove cancel handler
+if ($script:CancelHandler)
+{
+    [Console]::CancelKeyPress -= $script:CancelHandler
+}
+
+exit $( if ($Script:Cancelled)
+{
+    1
+}
+elseif ($Script:Failed -gt 0)
+{
+    1
+}
+else
+{
+    0
+} )

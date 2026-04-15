@@ -1,0 +1,21 @@
+# Test results
+test-results/
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Binary (built locally)
+octos
+octos.exe
