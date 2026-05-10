@@ -1,0 +1,170 @@
+[gateway] starting
+octos gateway
+
+[gateway] loading config (profile=None)
+[gateway] provider=anthropic
+Provider: anthropic
+Model: MiniMax-M2.7
+[gateway] LLM provider created, model=MiniMax-M2.7
+[gateway] opening episode store at /tmp/octos_test
+[gateway] episode store opened
+[gateway] opening memory store
+[gateway] memory store opened
+[2m2026-04-19T09:32:11.351843Z[0m [32m INFO[0m cron service started
+[2m2026-04-19T09:32:11.352557Z[0m [32m INFO[0m heartbeat service started [3minterval_secs[0m[2m=[0m1800
+[2m2026-04-19T09:32:11.352767Z[0m [32m INFO[0m injecting provider env vars into plugin processes [3mcount[0m[2m=[0m2 [3mvars[0m[2m=[0m["OPENAI_API_KEY", "OPENAI_BASE_URL"]
+[2m2026-04-19T09:32:11.371964Z[0m [33m WARN[0m loaded unverified plugin (no sha256 in manifest) [3mplugin[0m[2m=[0mdeep-crawl [3mversion[0m[2m=[0m1.0.0 [3mexecutable[0m[2m=[0m/Volumes/AppleData/octos/.octos/bundled-app-skills/deep-crawl/main
+[2m2026-04-19T09:32:11.395916Z[0m [33m WARN[0m loaded unverified plugin (no sha256 in manifest) [3mplugin[0m[2m=[0maccount-manager [3mversion[0m[2m=[0m1.1.0 [3mexecutable[0m[2m=[0m/Volumes/AppleData/octos/.octos/bundled-app-skills/account-manager/main
+[2m2026-04-19T09:32:11.413599Z[0m [33m WARN[0m loaded unverified plugin (no sha256 in manifest) [3mplugin[0m[2m=[0msend-email [3mversion[0m[2m=[0m1.0.0 [3mexecutable[0m[2m=[0m/Volumes/AppleData/octos/.octos/bundled-app-skills/send-email/main
+[2m2026-04-19T09:32:11.443028Z[0m [33m WARN[0m loaded unverified plugin (no sha256 in manifest) [3mplugin[0m[2m=[0mnews [3mversion[0m[2m=[0m1.0.0 [3mexecutable[0m[2m=[0m/Volumes/AppleData/octos/.octos/bundled-app-skills/news/main
+[2m2026-04-19T09:32:11.479045Z[0m [33m WARN[0m loaded unverified plugin (no sha256 in manifest) [3mplugin[0m[2m=[0mdeep-search [3mversion[0m[2m=[0m2.0.0 [3mexecutable[0m[2m=[0m/Volumes/AppleData/octos/.octos/bundled-app-skills/deep-search/main
+[2m2026-04-19T09:32:11.509116Z[0m [33m WARN[0m loaded unverified plugin (no sha256 in manifest) [3mplugin[0m[2m=[0mweather [3mversion[0m[2m=[0m1.0.0 [3mexecutable[0m[2m=[0m/Volumes/AppleData/octos/.octos/bundled-app-skills/weather/main
+[2m2026-04-19T09:32:11.531446Z[0m [33m WARN[0m loaded unverified plugin (no sha256 in manifest) [3mplugin[0m[2m=[0mclock [3mversion[0m[2m=[0m1.0.0 [3mexecutable[0m[2m=[0m/Volumes/AppleData/octos/.octos/bundled-app-skills/clock/main
+[2m2026-04-19T09:32:11.531957Z[0m [32m INFO[0m loaded plugin tools [3mtools[0m[2m=[0m8
+[2m2026-04-19T09:32:11.535365Z[0m [32m INFO[0m auto-deferred tool groups to reduce tool count [3mbefore[0m[2m=[0m31 [3mafter[0m[2m=[0m24
+Model: MiniMax-M2.7
+[2m2026-04-19T09:32:11.537355Z[0m [32m INFO[0m Using custom Telegram API URL: http://127.0.0.1:5000/
+[gateway] starting channels
+[gateway] channels started
+[2m2026-04-19T09:32:11.538107Z[0m [32m INFO[0m Starting Telegram channel (long polling)
+Max history: 50
+Max concurrent: 10
+
+[gateway] ready
+Gateway ready. Type a message or /quit to exit.
+
+[2m2026-04-19T09:32:11.538527Z[0m [32m INFO[0m persona service started [3minterval_secs[0m[2m=[0m21600
+[2m2026-04-19T09:32:11.541589Z[0m [32m INFO[0m Telegram bot commands registered
+[2m2026-04-19T09:32:11.542565Z[0m [32m INFO[0m Telegram polling stream connected [3mlast_update_id[0m[2m=[0m0
+[2m2026-04-19T09:33:11.540672Z[0m [32m INFO[0m persona tick: collecting conversations...
+[2m2026-04-19T09:33:11.542466Z[0m [32m INFO[0m persona tick: no conversations found, skipping
+[2m2026-04-19T09:33:11.542588Z[0m [32m INFO[0m generating status words...
+[2m2026-04-19T09:33:46.691920Z[0m [32m INFO[0m user soul updated [3msoul_len[0m[2m=[0m28 [3mchat_id[0m[2m=[0m"123"
+[2m2026-04-19T09:33:59.360433Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123
+[2m2026-04-19T09:33:59.367653Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:telegram:123 [3mchannel[0m[2m=[0m"telegram" [3mchat_id[0m[2m=[0m"123"
+[2m2026-04-19T09:33:59.986317Z[0m [33m WARN[0m status words LLM call failed: failed to parse Anthropic response
+[2m2026-04-19T09:34:05.799595Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123
+[2m2026-04-19T09:34:12.237445Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123
+[2m2026-04-19T09:34:18.670969Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123
+[2m2026-04-19T09:34:24.905565Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123
+[2m2026-04-19T09:34:31.342724Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123
+[2m2026-04-19T09:34:37.778841Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123
+[2m2026-04-19T09:35:09.386616Z[0m [32m INFO[0m user soul updated [3msoul_len[0m[2m=[0m29 [3mchat_id[0m[2m=[0m"301"
+[2m2026-04-19T09:35:10.393036Z[0m [32m INFO[0m user soul updated [3msoul_len[0m[2m=[0m26 [3mchat_id[0m[2m=[0m"302"
+[2m2026-04-19T09:35:19.044193Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m301|testuser [3msession[0m[2m=[0m_main:telegram:301#profile-a-topic
+[2m2026-04-19T09:35:19.055158Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:telegram:301#profile-a-topic [3mchannel[0m[2m=[0m"telegram" [3mchat_id[0m[2m=[0m"301"
+[2m2026-04-19T09:35:20.051173Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m302|testuser [3msession[0m[2m=[0m_main:telegram:302#profile-b-topic
+[2m2026-04-19T09:35:20.055948Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:telegram:302#profile-b-topic [3mchannel[0m[2m=[0m"telegram" [3mchat_id[0m[2m=[0m"302"
+[2m2026-04-19T09:35:21.059821Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m301|testuser [3msession[0m[2m=[0m_main:telegram:301#profile-a-topic
+[2m2026-04-19T09:35:27.503405Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:35:27.515918Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:telegram:123#cb-topic [3mchannel[0m[2m=[0m"telegram" [3mchat_id[0m[2m=[0m"123"
+[2m2026-04-19T09:35:27.523836Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:35:27.523922Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m29 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m224194
+[2m2026-04-19T09:35:31.408815Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m58 [3minput_tokens[0m[2m=[0m63139 [3moutput_tokens[0m[2m=[0m30
+[DEBUG] process_inbound: agent returned in 3892ms, ok=true
+[2m2026-04-19T09:35:35.748348Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:35:35.752881Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:35:35.752924Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m31 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m228252
+[2m2026-04-19T09:35:39.791600Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m16 [3minput_tokens[0m[2m=[0m1450 [3moutput_tokens[0m[2m=[0m30
+[DEBUG] process_inbound: agent returned in 4043ms, ok=true
+[2m2026-04-19T09:35:44.198982Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:35:44.206332Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:35:44.206399Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m33 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m228270
+[2m2026-04-19T09:35:46.209559Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m9 [3minput_tokens[0m[2m=[0m124 [3moutput_tokens[0m[2m=[0m26
+[DEBUG] process_inbound: agent returned in 2010ms, ok=true
+[2m2026-04-19T09:35:47.219812Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:35:47.224601Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:35:47.224657Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m35 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m228303
+[2m2026-04-19T09:35:51.426323Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m270 [3minput_tokens[0m[2m=[0m143 [3moutput_tokens[0m[2m=[0m103
+[DEBUG] process_inbound: agent returned in 4206ms, ok=true
+[2m2026-04-19T09:35:51.446505Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:35:57.683369Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m124|testuser [3msession[0m[2m=[0m_main:telegram:124
+[2m2026-04-19T09:35:57.687920Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:telegram:124 [3mchannel[0m[2m=[0m"telegram" [3mchat_id[0m[2m=[0m"124"
+[2m2026-04-19T09:35:57.688425Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:35:57.688453Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m6 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m12098
+[2m2026-04-19T09:35:59.896093Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m124|testuser [3msession[0m[2m=[0m_main:telegram:124
+[2m2026-04-19T09:36:00.340549Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m136 [3minput_tokens[0m[2m=[0m9999 [3moutput_tokens[0m[2m=[0m56
+[DEBUG] process_inbound: agent returned in 2653ms, ok=true
+[2m2026-04-19T09:36:00.403356Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:36:00.403473Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m8 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m12252
+[2m2026-04-19T09:36:03.919325Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m124|testuser [3msession[0m[2m=[0m_main:telegram:124
+[2m2026-04-19T09:36:03.952679Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m255 [3minput_tokens[0m[2m=[0m195 [3moutput_tokens[0m[2m=[0m95
+[DEBUG] process_inbound: agent returned in 3550ms, ok=true
+[2m2026-04-19T09:36:10.355004Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:36:16.793931Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:36:23.056472Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:36:29.490223Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:36:30.497601Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:36:31.505579Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:36:32.512693Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:36:38.987017Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:36:39.993272Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:36:41.001320Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:36:47.441180Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:36:47.442429Z[0m [32m INFO[0m auto-evicted idle tools [3mevicted[0m[2m=[0msynthesize_research, check_background_tasks, save_memory, git, code_structure, diff_edit, recall_memory, workspace_log, workspace_diff, workspace_show, check_workspace_contract [3mcount[0m[2m=[0m11
+[2m2026-04-19T09:36:47.451601Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m37 [3mtools[0m[2m=[0m18 [3mmessage_bytes[0m[2m=[0m228603
+[2m2026-04-19T09:36:47.845797Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:36:48.465997Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:36:52.887172Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m102 [3minput_tokens[0m[2m=[0m62676 [3moutput_tokens[0m[2m=[0m78
+[DEBUG] process_inbound: agent returned in 5445ms, ok=true
+[2m2026-04-19T09:36:52.959060Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m39 [3mtools[0m[2m=[0m18 [3mmessage_bytes[0m[2m=[0m228758
+[2m2026-04-19T09:36:55.330740Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m23 [3minput_tokens[0m[2m=[0m457 [3moutput_tokens[0m[2m=[0m26
+[DEBUG] process_inbound: agent returned in 2380ms, ok=true
+[2m2026-04-19T09:37:01.178990Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:37:01.272729Z[0m [33m WARN[0m fallback truncation (85333 token limit) [3mmessages_dropped[0m[2m=[0m38 [3mmessages_kept[0m[2m=[0m3
+[2m2026-04-19T09:37:01.272820Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m3 [3mtools[0m[2m=[0m18 [3mmessage_bytes[0m[2m=[0m1060271
+[2m2026-04-19T09:37:06.726316Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m68 [3minput_tokens[0m[2m=[0m41046 [3moutput_tokens[0m[2m=[0m48
+[DEBUG] process_inbound: agent returned in 5501ms, ok=true
+[2m2026-04-19T09:37:09.419574Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:37:18.025765Z[0m [33m WARN[0m session compaction failed: failed to parse Anthropic response
+[2m2026-04-19T09:37:18.114879Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m42 [3mtools[0m[2m=[0m18 [3mmessage_bytes[0m[2m=[0m331240
+[2m2026-04-19T09:37:20.929707Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:37:21.888996Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m41 [3minput_tokens[0m[2m=[0m26098 [3moutput_tokens[0m[2m=[0m28
+[DEBUG] process_inbound: agent returned in 3777ms, ok=true
+[2m2026-04-19T09:37:23.142596Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:37:30.039595Z[0m [33m WARN[0m session compaction failed: failed to parse Anthropic response
+[2m2026-04-19T09:37:30.087876Z[0m [32m INFO[0m compacted conversation history (85333 token budget) [3moriginal_tokens[0m[2m=[0m134139 [3msummary_tokens[0m[2m=[0m724 [3mmessages_compacted[0m[2m=[0m38 [3mmessages_remaining[0m[2m=[0m7 [3moriginal_messages[0m[2m=[0m44
+[2m2026-04-19T09:37:30.087973Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m6 [3mtools[0m[2m=[0m18 [3mmessage_bytes[0m[2m=[0m321923
+[2m2026-04-19T09:37:32.599149Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:37:34.738161Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m47 [3minput_tokens[0m[2m=[0m85901 [3moutput_tokens[0m[2m=[0m25
+[DEBUG] process_inbound: agent returned in 4670ms, ok=true
+[2m2026-04-19T09:37:35.819294Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:37:45.805357Z[0m [33m WARN[0m session compaction failed: failed to parse Anthropic response
+[2m2026-04-19T09:37:45.853472Z[0m [32m INFO[0m compacted conversation history (85333 token budget) [3moriginal_tokens[0m[2m=[0m134153 [3msummary_tokens[0m[2m=[0m734 [3mmessages_compacted[0m[2m=[0m39 [3mmessages_remaining[0m[2m=[0m7 [3moriginal_messages[0m[2m=[0m45
+[2m2026-04-19T09:37:45.853550Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m6 [3mtools[0m[2m=[0m18 [3mmessage_bytes[0m[2m=[0m321984
+[2m2026-04-19T09:37:48.290451Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:37:50.277426Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m19 [3minput_tokens[0m[2m=[0m85919 [3moutput_tokens[0m[2m=[0m22
+[DEBUG] process_inbound: agent returned in 4441ms, ok=true
+[2m2026-04-19T09:37:50.718634Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:38:00.766479Z[0m [33m WARN[0m session compaction failed: failed to parse Anthropic response
+[2m2026-04-19T09:38:00.810852Z[0m [32m INFO[0m compacted conversation history (85333 token budget) [3moriginal_tokens[0m[2m=[0m134160 [3msummary_tokens[0m[2m=[0m754 [3mmessages_compacted[0m[2m=[0m40 [3mmessages_remaining[0m[2m=[0m7 [3moriginal_messages[0m[2m=[0m46
+[2m2026-04-19T09:38:00.810911Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m6 [3mtools[0m[2m=[0m18 [3mmessage_bytes[0m[2m=[0m322017
+[2m2026-04-19T09:38:04.198914Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:38:08.501946Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m12 [3minput_tokens[0m[2m=[0m85928 [3moutput_tokens[0m[2m=[0m30
+[DEBUG] process_inbound: agent returned in 7707ms, ok=true
+[2m2026-04-19T09:38:09.427971Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:38:16.651637Z[0m [33m WARN[0m session compaction failed: failed to parse Anthropic response
+[2m2026-04-19T09:38:16.686608Z[0m [32m INFO[0m compacted conversation history (85333 token budget) [3moriginal_tokens[0m[2m=[0m134166 [3msummary_tokens[0m[2m=[0m807 [3mmessages_compacted[0m[2m=[0m41 [3mmessages_remaining[0m[2m=[0m7 [3moriginal_messages[0m[2m=[0m47
+[2m2026-04-19T09:38:16.686692Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m6 [3mtools[0m[2m=[0m18 [3mmessage_bytes[0m[2m=[0m219850
+[2m2026-04-19T09:38:19.889878Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:38:21.902469Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:38:21.935526Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m20 [3minput_tokens[0m[2m=[0m60463 [3moutput_tokens[0m[2m=[0m34
+[DEBUG] process_inbound: agent returned in 5262ms, ok=true
+[2m2026-04-19T09:38:28.565962Z[0m [33m WARN[0m session compaction failed: failed to parse Anthropic response
+[2m2026-04-19T09:38:28.607952Z[0m [32m INFO[0m compacted conversation history (85333 token budget) [3moriginal_tokens[0m[2m=[0m108578 [3msummary_tokens[0m[2m=[0m807 [3mmessages_compacted[0m[2m=[0m41 [3mmessages_remaining[0m[2m=[0m8 [3moriginal_messages[0m[2m=[0m48
+[2m2026-04-19T09:38:28.608032Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m7 [3mtools[0m[2m=[0m18 [3mmessage_bytes[0m[2m=[0m117484
+[2m2026-04-19T09:38:37.590846Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m999|testuser [3msession[0m[2m=[0m_main:telegram:999#size-limit-test
+[2m2026-04-19T09:38:37.599639Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:telegram:999#size-limit-test [3mchannel[0m[2m=[0m"telegram" [3mchat_id[0m[2m=[0m"999"
+[2m2026-04-19T09:38:37.600379Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:38:37.600422Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m2 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m11680
+[2m2026-04-19T09:38:41.935531Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m59 [3minput_tokens[0m[2m=[0m9872 [3moutput_tokens[0m[2m=[0m72
+[DEBUG] process_inbound: agent returned in 4335ms, ok=true
+[2m2026-04-19T09:38:47.043626Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:39:00.853015Z[0m [33m WARN[0m wait_for_shutdown: 30s deadline reached without shutdown signal
+[2m2026-04-19T09:39:00.853263Z[0m [33m WARN[0m shutdown received during streaming
+[2m2026-04-19T09:39:00.853414Z[0m [33m WARN[0m abnormal LLM response, retrying [3mattempt[0m[2m=[0m1 [3mmax[0m[2m=[0m3 [3mdelay_s[0m[2m=[0m1 [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mreason[0m[2m=[0m"empty response (no content/tool_calls)"
+[2m2026-04-19T09:39:05.569424Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m97 [3minput_tokens[0m[2m=[0m28 [3moutput_tokens[0m[2m=[0m82
+[DEBUG] process_inbound: agent returned in 36973ms, ok=true
+[2m2026-04-19T09:39:07.759777Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mtelegram [3msender[0m[2m=[0m123|testuser [3msession[0m[2m=[0m_main:telegram:123#cb-topic
+[2m2026-04-19T09:39:13.632288Z[0m [33m WARN[0m session compaction failed: failed to parse Anthropic response
+[2m2026-04-19T09:39:13.654137Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m49 [3mtools[0m[2m=[0m18 [3mmessage_bytes[0m[2m=[0m331504

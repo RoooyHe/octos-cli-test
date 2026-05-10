@@ -1,0 +1,65 @@
+warning: value assigned to `consecutive_failures` is never read
+   --> crates/octos-bus/src/telegram_channel.rs:282:45
+    |
+282 |         let mut consecutive_failures: u32 = 0;
+    |                                             ^
+    |
+    = help: maybe it is overwritten before being read?
+    = note: `#[warn(unused_assignments)]` (part of `#[warn(unused)]`) on by default
+
+warning: constant `MAX_SEEN_IDS` is never used
+  --> crates/octos-bus/src/feishu_channel.rs:36:7
+   |
+36 | const MAX_SEEN_IDS: usize = 1000;
+   |       ^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: constant `HEADER_MESSAGE_ID` is never used
+  --> crates/octos-bus/src/feishu_channel.rs:49:7
+   |
+49 | const HEADER_MESSAGE_ID: &str = "message_id";
+   |       ^^^^^^^^^^^^^^^^^
+
+warning: constant `HEADER_BIZ_RT` is never used
+  --> crates/octos-bus/src/feishu_channel.rs:52:7
+   |
+52 | const HEADER_BIZ_RT: &str = "biz_rt";
+   |       ^^^^^^^^^^^^^
+
+warning: function `new_response_frame` is never used
+   --> crates/octos-bus/src/feishu_channel.rs:317:4
+    |
+317 | fn new_response_frame(incoming: &Frame, status_code: i32, biz_rt_ms: u64) -> Frame {
+    |    ^^^^^^^^^^^^^^^^^^
+
+warning: `octos-bus` (lib) generated 5 warnings
+   Compiling octos-cli v0.1.1 (/Volumes/AppleData/octos/crates/octos-cli)
+warning: unused import: `matrix_integration::*`
+  --> crates/octos-cli/src/commands/gateway/mod.rs:25:5
+   |
+25 | use matrix_integration::*;
+   |     ^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: variable does not need to be mutable
+    --> crates/octos-cli/src/api/admin.rs:2821:9
+     |
+2821 |     let mut child = cmd
+     |         ----^^^^^
+     |         |
+     |         help: remove this `mut`
+     |
+     = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `id`
+    --> crates/octos-cli/src/api/admin.rs:4317:10
+     |
+4317 |     Path(id): Path<String>,
+     |          ^^ help: if this is intentional, prefix it with an underscore: `_id`
+     |
+     = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: `octos-cli` (bin "octos") generated 3 warnings (run `cargo fix --bin "octos" -p octos-cli` to apply 3 suggestions)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 9.92s

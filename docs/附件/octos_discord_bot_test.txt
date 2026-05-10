@@ -1,0 +1,393 @@
+[gateway] starting
+octos gateway
+
+[gateway] loading config (profile=None)
+[gateway] provider=anthropic
+Provider: anthropic
+Model: MiniMax-M2.7
+[gateway] LLM provider created, model=MiniMax-M2.7
+[gateway] opening episode store at /tmp/octos_test
+[gateway] episode store opened
+[gateway] opening memory store
+[gateway] memory store opened
+[2m2026-04-19T09:39:18.966098Z[0m [32m INFO[0m cron service started
+[2m2026-04-19T09:39:18.966191Z[0m [32m INFO[0m heartbeat service started [3minterval_secs[0m[2m=[0m1800
+[2m2026-04-19T09:39:18.966230Z[0m [32m INFO[0m injecting provider env vars into plugin processes [3mcount[0m[2m=[0m2 [3mvars[0m[2m=[0m["OPENAI_API_KEY", "OPENAI_BASE_URL"]
+[2m2026-04-19T09:39:18.983741Z[0m [33m WARN[0m loaded unverified plugin (no sha256 in manifest) [3mplugin[0m[2m=[0mdeep-crawl [3mversion[0m[2m=[0m1.0.0 [3mexecutable[0m[2m=[0m/Volumes/AppleData/octos/.octos/bundled-app-skills/deep-crawl/main
+[2m2026-04-19T09:39:19.004060Z[0m [33m WARN[0m loaded unverified plugin (no sha256 in manifest) [3mplugin[0m[2m=[0maccount-manager [3mversion[0m[2m=[0m1.1.0 [3mexecutable[0m[2m=[0m/Volumes/AppleData/octos/.octos/bundled-app-skills/account-manager/main
+[2m2026-04-19T09:39:19.022379Z[0m [33m WARN[0m loaded unverified plugin (no sha256 in manifest) [3mplugin[0m[2m=[0msend-email [3mversion[0m[2m=[0m1.0.0 [3mexecutable[0m[2m=[0m/Volumes/AppleData/octos/.octos/bundled-app-skills/send-email/main
+[2m2026-04-19T09:39:19.058421Z[0m [33m WARN[0m loaded unverified plugin (no sha256 in manifest) [3mplugin[0m[2m=[0mnews [3mversion[0m[2m=[0m1.0.0 [3mexecutable[0m[2m=[0m/Volumes/AppleData/octos/.octos/bundled-app-skills/news/main
+[2m2026-04-19T09:39:19.092417Z[0m [33m WARN[0m loaded unverified plugin (no sha256 in manifest) [3mplugin[0m[2m=[0mdeep-search [3mversion[0m[2m=[0m2.0.0 [3mexecutable[0m[2m=[0m/Volumes/AppleData/octos/.octos/bundled-app-skills/deep-search/main
+[2m2026-04-19T09:39:19.126247Z[0m [33m WARN[0m loaded unverified plugin (no sha256 in manifest) [3mplugin[0m[2m=[0mweather [3mversion[0m[2m=[0m1.0.0 [3mexecutable[0m[2m=[0m/Volumes/AppleData/octos/.octos/bundled-app-skills/weather/main
+[2m2026-04-19T09:39:19.163377Z[0m [33m WARN[0m loaded unverified plugin (no sha256 in manifest) [3mplugin[0m[2m=[0mclock [3mversion[0m[2m=[0m1.0.0 [3mexecutable[0m[2m=[0m/Volumes/AppleData/octos/.octos/bundled-app-skills/clock/main
+[2m2026-04-19T09:39:19.164163Z[0m [32m INFO[0m loaded plugin tools [3mtools[0m[2m=[0m8
+[2m2026-04-19T09:39:19.165663Z[0m [32m INFO[0m auto-deferred tool groups to reduce tool count [3mbefore[0m[2m=[0m31 [3mafter[0m[2m=[0m24
+Model: MiniMax-M2.7
+[2m2026-04-19T09:39:19.166299Z[0m [32m INFO[0m Discord using custom API base URL (mock mode) [3murl[0m[2m=[0mhttp://127.0.0.1:5001
+[gateway] starting channels
+[gateway] channels started
+Max history: 50
+Max concurrent: 10
+
+[gateway] ready
+Gateway ready. Type a message or /quit to exit.
+
+[2m2026-04-19T09:39:19.166536Z[0m [32m INFO[0m Starting Discord channel (gateway)
+[2m2026-04-19T09:39:19.166646Z[0m [32m INFO[0m persona service started [3minterval_secs[0m[2m=[0m21600
+[2m2026-04-19T09:39:19.169378Z[0m [32m INFO[0m [1mstart[0m:[1mstart_connection[0m:[1minitialize[0m:[1mboot[0m: Telling shard queuer to start shard 0 [2m[3mstart_shard[0m[2m=[0m0 [3mend_shard[0m[2m=[0m0 [3mtotal_shards[0m[2m=[0m1[0m [2m[3mshard_info[0m[2m=[0m[ShardId(0), ShardId(1)][0m
+[2m2026-04-19T09:39:19.171558Z[0m [32m INFO[0m [1mrun[0m: [ShardRunner ShardInfo { id: ShardId(0), total: 1 }] Running
+[2m2026-04-19T09:39:19.172923Z[0m [32m INFO[0m Discord bot connected [3muser[0m[2m=[0mTestBot
+[2m2026-04-19T09:39:25.686980Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:39:32.059245Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:39:38.453393Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:39:44.852669Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:39:45.894097Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:39:52.291986Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:39:58.680326Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:40:05.072240Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:40:11.458625Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:40:12.498676Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:40:18.887470Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:40:19.169925Z[0m [32m INFO[0m persona tick: collecting conversations...
+[2m2026-04-19T09:40:19.170584Z[0m [32m INFO[0m persona tick: no conversations found, skipping
+[2m2026-04-19T09:40:19.170662Z[0m [32m INFO[0m generating status words...
+[2m2026-04-19T09:40:19.928278Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:40:26.314984Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:40:32.706303Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:40:39.100363Z[0m [32m INFO[0m user soul updated [3msoul_len[0m[2m=[0m16 [3mchat_id[0m[2m=[0m"1039178386623557754"
+[2m2026-04-19T09:40:39.101715Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:40:45.493509Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:40:51.890038Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:40:52.933118Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:40:58.022928Z[0m [33m WARN[0m status words LLM call failed: failed to parse Anthropic response
+[2m2026-04-19T09:40:59.320026Z[0m [32m INFO[0m user soul updated [3msoul_len[0m[2m=[0m11 [3mchat_id[0m[2m=[0m"1039178386623557754"
+[2m2026-04-19T09:40:59.321603Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:41:00.362306Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:41:06.753779Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557754
+[2m2026-04-19T09:41:06.758641Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:discord:1039178386623557754 [3mchannel[0m[2m=[0m"discord" [3mchat_id[0m[2m=[0m"1039178386623557754"
+[2m2026-04-19T09:41:06.760036Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:41:13.153240Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557754
+[2m2026-04-19T09:41:13.154596Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:41:19.547954Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557754
+[2m2026-04-19T09:41:19.549262Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:41:25.939562Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557754
+[2m2026-04-19T09:41:25.940878Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:41:32.327476Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557754
+[2m2026-04-19T09:41:32.328867Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:41:38.720017Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557754
+[2m2026-04-19T09:41:38.721455Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:41:45.114886Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557754
+[2m2026-04-19T09:41:45.116681Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:41:51.510234Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:41:52.547319Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:41:53.596240Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:41:59.987496Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557754#topic-a
+[2m2026-04-19T09:41:59.991799Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:discord:1039178386623557754#topic-a [3mchannel[0m[2m=[0m"discord" [3mchat_id[0m[2m=[0m"1039178386623557754"
+[2m2026-04-19T09:41:59.992325Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:41:59.992350Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m6 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m11813
+[2m2026-04-19T09:42:02.002533Z[0m [33m WARN[0m failed to send status message: failed to send Discord message
+[2m2026-04-19T09:42:02.056489Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:42:02.235329Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m43 [3minput_tokens[0m[2m=[0m9927 [3moutput_tokens[0m[2m=[0m32
+[DEBUG] process_inbound: agent returned in 2244ms, ok=true
+[2m2026-04-19T09:42:02.239135Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:02.241075Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:02.242435Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:02.300477Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:42:08.440907Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557754#topic-a
+[2m2026-04-19T09:42:08.441480Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:42:08.441511Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m8 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m11862
+[2m2026-04-19T09:42:10.451158Z[0m [33m WARN[0m failed to send status message: failed to send Discord message
+[2m2026-04-19T09:42:11.260897Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:11.267038Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m47 [3minput_tokens[0m[2m=[0m99 [3moutput_tokens[0m[2m=[0m62
+[DEBUG] process_inbound: agent returned in 2826ms, ok=true
+[2m2026-04-19T09:42:11.269834Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:11.271550Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:11.329906Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:42:15.848022Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:42:16.890577Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:42:17.936020Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:42:18.972859Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:42:25.361862Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557765
+[2m2026-04-19T09:42:25.366626Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:discord:1039178386623557765 [3mchannel[0m[2m=[0m"discord" [3mchat_id[0m[2m=[0m"1039178386623557765"
+[2m2026-04-19T09:42:25.367153Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:42:25.367176Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m4 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m13853
+[2m2026-04-19T09:42:27.376906Z[0m [33m WARN[0m failed to send status message: failed to send Discord message
+[2m2026-04-19T09:42:28.379593Z[0m [33m WARN[0m failed to send status message: failed to send Discord message
+[2m2026-04-19T09:42:28.463023Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:29.266749Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m83 [3minput_tokens[0m[2m=[0m10424 [3moutput_tokens[0m[2m=[0m42
+[DEBUG] process_inbound: agent returned in 3901ms, ok=true
+[2m2026-04-19T09:42:29.273274Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:29.276179Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:29.334420Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:42:34.087543Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557766
+[2m2026-04-19T09:42:34.091174Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:discord:1039178386623557766 [3mchannel[0m[2m=[0m"discord" [3mchat_id[0m[2m=[0m"1039178386623557766"
+[2m2026-04-19T09:42:34.091694Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:42:34.091722Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m4 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m15394
+[2m2026-04-19T09:42:36.104314Z[0m [33m WARN[0m failed to send status message: failed to send Discord message
+[2m2026-04-19T09:42:37.107821Z[0m [33m WARN[0m failed to send status message: failed to send Discord message
+[2m2026-04-19T09:42:38.114207Z[0m [33m WARN[0m failed to send status message: failed to send Discord message
+[2m2026-04-19T09:42:38.180800Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:38.752403Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m95 [3minput_tokens[0m[2m=[0m10809 [3moutput_tokens[0m[2m=[0m50
+[DEBUG] process_inbound: agent returned in 4661ms, ok=true
+[2m2026-04-19T09:42:38.755204Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:38.756734Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:38.812679Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:42:42.478348Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557754#user1-session
+[2m2026-04-19T09:42:42.482492Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:discord:1039178386623557754#user1-session [3mchannel[0m[2m=[0m"discord" [3mchat_id[0m[2m=[0m"1039178386623557754"
+[2m2026-04-19T09:42:42.482993Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:42:42.483020Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m4 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m17897
+[2m2026-04-19T09:42:44.495139Z[0m [33m WARN[0m failed to send status message: failed to send Discord message
+[2m2026-04-19T09:42:44.895499Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:46.117443Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:47.598886Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:48.866721Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:50.037952Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:51.278170Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:52.489095Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:53.200840Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:42:53.989026Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:55.505876Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:56.766116Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:58.156329Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:59.350673Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:42:59.591036Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:43:05.998035Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:43:05.999005Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:43:05.999795Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:43:06.002559Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:43:06.005006Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:43:06.006816Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:43:06.008192Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:43:06.009012Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:43:06.009583Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:43:06.010128Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:43:12.407886Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557754#concurrent-0
+[2m2026-04-19T09:43:12.412433Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:discord:1039178386623557754#concurrent-0 [3mchannel[0m[2m=[0m"discord" [3mchat_id[0m[2m=[0m"1039178386623557754"
+[2m2026-04-19T09:43:12.412946Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:43:12.412973Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m6 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m12090
+[2m2026-04-19T09:43:14.423943Z[0m [33m WARN[0m failed to send status message: failed to send Discord message
+[2m2026-04-19T09:43:14.466856Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557754#concurrent-0
+[2m2026-04-19T09:43:15.314019Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:15.759450Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m69 [3minput_tokens[0m[2m=[0m9997 [3moutput_tokens[0m[2m=[0m42
+[DEBUG] process_inbound: agent returned in 3347ms, ok=true
+[2m2026-04-19T09:43:15.763551Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:15.765587Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:15.821163Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:43:15.821379Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m8 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m12177
+[2m2026-04-19T09:43:15.824069Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:43:16.521436Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557754#concurrent-0
+[2m2026-04-19T09:43:17.392841Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:18.796421Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:19.273849Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m308 [3minput_tokens[0m[2m=[0m178 [3moutput_tokens[0m[2m=[0m110
+[DEBUG] process_inbound: agent returned in 3454ms, ok=true
+[2m2026-04-19T09:43:19.278902Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:19.280867Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:19.338959Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:43:19.340839Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:43:22.321869Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m9151 [3minput_tokens[0m[2m=[0m11347 [3moutput_tokens[0m[2m=[0m2266
+[DEBUG] process_inbound: agent returned in 39839ms, ok=true
+[2m2026-04-19T09:43:22.379966Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:43:24.961700Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557755#concurrent-1
+[2m2026-04-19T09:43:24.965983Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:discord:1039178386623557755#concurrent-1 [3mchannel[0m[2m=[0m"discord" [3mchat_id[0m[2m=[0m"1039178386623557755"
+[2m2026-04-19T09:43:24.966551Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:43:24.966581Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m6 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m12306
+[2m2026-04-19T09:43:26.977809Z[0m [33m WARN[0m failed to send status message: failed to send Discord message
+[2m2026-04-19T09:43:27.022178Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557755#concurrent-1
+[2m2026-04-19T09:43:27.336360Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:27.534452Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m96 [3minput_tokens[0m[2m=[0m10035 [3moutput_tokens[0m[2m=[0m40
+[DEBUG] process_inbound: agent returned in 2569ms, ok=true
+[2m2026-04-19T09:43:27.539165Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:27.540975Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:27.597539Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:43:27.597725Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m8 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m12452
+[2m2026-04-19T09:43:27.599863Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:43:29.066316Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557755#concurrent-1
+[2m2026-04-19T09:43:29.606472Z[0m [33m WARN[0m failed to send status message: failed to send Discord message
+[2m2026-04-19T09:43:30.613047Z[0m [33m WARN[0m failed to send status message: failed to send Discord message
+[2m2026-04-19T09:43:30.614170Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:32.386597Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:33.711543Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:35.024737Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:36.345776Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:37.467587Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:38.583071Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:39.721097Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:40.723502Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:41.954731Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:43.202142Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:44.250405Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:44.664163Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557756#concurrent-2
+[2m2026-04-19T09:43:44.669506Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:discord:1039178386623557756#concurrent-2 [3mchannel[0m[2m=[0m"discord" [3mchat_id[0m[2m=[0m"1039178386623557756"
+[2m2026-04-19T09:43:44.670038Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:43:44.670072Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m6 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m12357
+[2m2026-04-19T09:43:45.654486Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:46.681158Z[0m [33m WARN[0m failed to send status message: failed to send Discord message
+[2m2026-04-19T09:43:46.718753Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557756#concurrent-2
+[2m2026-04-19T09:43:46.991401Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:47.299249Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m43 [3minput_tokens[0m[2m=[0m10033 [3moutput_tokens[0m[2m=[0m32
+[DEBUG] process_inbound: agent returned in 2629ms, ok=true
+[2m2026-04-19T09:43:47.301169Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:47.302423Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:47.303466Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:47.357340Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:43:47.357404Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m8 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m12430
+[2m2026-04-19T09:43:47.358248Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:43:48.772561Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557756#concurrent-2
+[2m2026-04-19T09:43:48.937881Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:49.368318Z[0m [33m WARN[0m failed to send status message: failed to send Discord message
+[2m2026-04-19T09:43:50.063423Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:50.555200Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:51.372593Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:51.920259Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:52.795823Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:53.241403Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:53.951259Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:54.384799Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:55.415227Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:55.695581Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:55.708656Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m913 [3minput_tokens[0m[2m=[0m210 [3moutput_tokens[0m[2m=[0m204
+[DEBUG] process_inbound: agent returned in 8352ms, ok=true
+[2m2026-04-19T09:43:55.714104Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:55.716450Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:55.775785Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:43:55.777663Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:43:56.891420Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:58.459288Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:43:59.928766Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:44:01.228398Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:44:01.276660Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557757#concurrent-3
+[2m2026-04-19T09:44:01.280723Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:discord:1039178386623557757#concurrent-3 [3mchannel[0m[2m=[0m"discord" [3mchat_id[0m[2m=[0m"1039178386623557757"
+[2m2026-04-19T09:44:01.281212Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:44:01.281238Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m6 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m12147
+[2m2026-04-19T09:44:02.145737Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m8894 [3minput_tokens[0m[2m=[0m221 [3moutput_tokens[0m[2m=[0m1753
+[DEBUG] process_inbound: agent returned in 34549ms, ok=true
+[2m2026-04-19T09:44:02.146187Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:44:02.146298Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:44:02.201495Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m6
+[2m2026-04-19T09:44:02.202320Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:44:02.312605Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557757#concurrent-3
+[2m2026-04-19T09:44:03.288493Z[0m [33m WARN[0m failed to send status message: failed to send Discord message
+[2m2026-04-19T09:44:03.565405Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:44:03.567605Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m46 [3minput_tokens[0m[2m=[0m10019 [3moutput_tokens[0m[2m=[0m37
+[DEBUG] process_inbound: agent returned in 2287ms, ok=true
+[2m2026-04-19T09:44:03.569786Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:44:03.571480Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:44:03.626716Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:44:03.626807Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m8 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m12197
+[2m2026-04-19T09:44:03.627890Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:44:04.368825Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557757#concurrent-3
+[2m2026-04-19T09:44:05.636369Z[0m [33m WARN[0m failed to send status message: failed to send Discord message
+[2m2026-04-19T09:44:06.151534Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:44:07.348814Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:44:08.821991Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:44:09.006387Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m438 [3minput_tokens[0m[2m=[0m193 [3moutput_tokens[0m[2m=[0m149
+[DEBUG] process_inbound: agent returned in 5381ms, ok=true
+[2m2026-04-19T09:44:09.009772Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:44:09.011576Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:44:09.067089Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:44:09.068559Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:44:14.849190Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557764
+[2m2026-04-19T09:44:14.853707Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:discord:1039178386623557764 [3mchannel[0m[2m=[0m"discord" [3mchat_id[0m[2m=[0m"1039178386623557764"
+[2m2026-04-19T09:44:14.855373Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:44:15.891411Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557764
+[2m2026-04-19T09:44:15.892709Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:44:16.954372Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557764
+[2m2026-04-19T09:44:16.955606Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:44:23.347485Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557767
+[2m2026-04-19T09:44:23.352065Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:discord:1039178386623557767 [3mchannel[0m[2m=[0m"discord" [3mchat_id[0m[2m=[0m"1039178386623557767"
+[2m2026-04-19T09:44:23.353405Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:44:29.742358Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557768
+[2m2026-04-19T09:44:29.745776Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:discord:1039178386623557768 [3mchannel[0m[2m=[0m"discord" [3mchat_id[0m[2m=[0m"1039178386623557768"
+[2m2026-04-19T09:44:29.747357Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:44:36.129576Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557769
+[2m2026-04-19T09:44:36.133878Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:discord:1039178386623557769 [3mchannel[0m[2m=[0m"discord" [3mchat_id[0m[2m=[0m"1039178386623557769"
+[2m2026-04-19T09:44:36.134400Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:44:36.134430Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m6 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m11913
+[2m2026-04-19T09:44:36.661707Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557769
+[2m2026-04-19T09:44:38.143349Z[0m [33m WARN[0m failed to send status message: failed to send Discord message
+[2m2026-04-19T09:44:38.799259Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:44:38.955855Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m69 [3minput_tokens[0m[2m=[0m9943 [3moutput_tokens[0m[2m=[0m69
+[DEBUG] process_inbound: agent returned in 2822ms, ok=true
+[2m2026-04-19T09:44:38.959215Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:44:38.960999Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:44:39.016115Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:44:39.016225Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m8 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m12004
+[2m2026-04-19T09:44:39.017303Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:44:41.024668Z[0m [33m WARN[0m failed to send status message: failed to send Discord message
+[2m2026-04-19T09:44:41.314156Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:44:41.323925Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m30 [3minput_tokens[0m[2m=[0m125 [3moutput_tokens[0m[2m=[0m37
+[DEBUG] process_inbound: agent returned in 2309ms, ok=true
+[2m2026-04-19T09:44:41.326606Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:44:41.328799Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:44:41.389018Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:44:42.543589Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:44:43.588821Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:44:44.636183Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:44:45.674456Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:44:52.059229Z[0m [32m INFO[0m user soul updated [3msoul_len[0m[2m=[0m23 [3mchat_id[0m[2m=[0m"1039178386623557758"
+[2m2026-04-19T09:44:52.060623Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:44:53.100657Z[0m [32m INFO[0m user soul updated [3msoul_len[0m[2m=[0m25 [3mchat_id[0m[2m=[0m"1039178386623557759"
+[2m2026-04-19T09:44:53.102058Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:44:54.142978Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:44:55.184546Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:45:01.584488Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557762#concurrent-8
+[2m2026-04-19T09:45:01.589592Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:discord:1039178386623557762#concurrent-8 [3mchannel[0m[2m=[0m"discord" [3mchat_id[0m[2m=[0m"1039178386623557762"
+[2m2026-04-19T09:45:01.591077Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:45:02.624433Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557763#concurrent-9
+[2m2026-04-19T09:45:02.631197Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:discord:1039178386623557763#concurrent-9 [3mchannel[0m[2m=[0m"discord" [3mchat_id[0m[2m=[0m"1039178386623557763"
+[2m2026-04-19T09:45:02.632485Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:45:03.658842Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557762#concurrent-8
+[2m2026-04-19T09:45:03.660373Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:45:10.048356Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557760#concurrent-6
+[2m2026-04-19T09:45:10.052451Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:discord:1039178386623557760#concurrent-6 [3mchannel[0m[2m=[0m"discord" [3mchat_id[0m[2m=[0m"1039178386623557760"
+[2m2026-04-19T09:45:10.053007Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:45:10.053036Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m4 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m15462
+[2m2026-04-19T09:45:12.063290Z[0m [33m WARN[0m failed to send status message: failed to send Discord message
+[2m2026-04-19T09:45:12.502405Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:45:12.702477Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m92 [3minput_tokens[0m[2m=[0m10035 [3moutput_tokens[0m[2m=[0m56
+[DEBUG] process_inbound: agent returned in 2650ms, ok=true
+[2m2026-04-19T09:45:12.704994Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:45:12.706535Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:45:12.761898Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:45:17.451122Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557761#concurrent-7
+[2m2026-04-19T09:45:17.456552Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:discord:1039178386623557761#concurrent-7 [3mchannel[0m[2m=[0m"discord" [3mchat_id[0m[2m=[0m"1039178386623557761"
+[2m2026-04-19T09:45:17.457356Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:45:17.457392Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m6 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m12623
+[2m2026-04-19T09:45:19.474477Z[0m [33m WARN[0m failed to send status message: failed to send Discord message
+[2m2026-04-19T09:45:19.510562Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557761#concurrent-7
+[2m2026-04-19T09:45:20.481106Z[0m [33m WARN[0m failed to send status message: failed to send Discord message
+[2m2026-04-19T09:45:20.550400Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557761#concurrent-7
+[2m2026-04-19T09:45:20.955565Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:45:21.590464Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557761#concurrent-7
+[2m2026-04-19T09:45:21.822407Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m240 [3minput_tokens[0m[2m=[0m10141 [3moutput_tokens[0m[2m=[0m93
+[DEBUG] process_inbound: agent returned in 4366ms, ok=true
+[2m2026-04-19T09:45:21.825942Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:45:21.827817Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:45:21.881597Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:45:21.881681Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m8 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m12922
+[2m2026-04-19T09:45:21.882878Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:45:22.635369Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557761#concurrent-7
+[2m2026-04-19T09:45:23.663232Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:45:24.694707Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:45:24.833558Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:45:25.222108Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m255 [3minput_tokens[0m[2m=[0m377 [3moutput_tokens[0m[2m=[0m88
+[DEBUG] process_inbound: agent returned in 3341ms, ok=true
+[2m2026-04-19T09:45:25.224823Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:45:25.226561Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:45:25.280621Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:45:25.280695Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m10 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m13186
+[2m2026-04-19T09:45:25.281940Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:45:27.286486Z[0m [33m WARN[0m failed to send status message: failed to send Discord message
+[2m2026-04-19T09:45:28.255191Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:45:29.500639Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:45:29.855931Z[0m [32m INFO[0m LLM response received [3miteration[0m[2m=[0m1 [3mstop_reason[0m[2m=[0mEndTurn [3mtool_calls[0m[2m=[0m0 [3mtool_names[0m[2m=[0m [3mtool_ids[0m[2m=[0m [3mresponse_content_len[0m[2m=[0m342 [3minput_tokens[0m[2m=[0m448 [3moutput_tokens[0m[2m=[0m139
+[DEBUG] process_inbound: agent returned in 4576ms, ok=true
+[2m2026-04-19T09:45:29.860067Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:45:29.861844Z[0m [33m WARN[0m stream send failed: failed to send Discord message
+[2m2026-04-19T09:45:29.918604Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:45:31.131729Z[0m [31mERROR[0m Failed to send outbound chunk: failed to send Discord message [3mchannel[0m[2m=[0m"discord" [3mchunk[0m[2m=[0m1 [3mtotal[0m[2m=[0m1
+[2m2026-04-19T09:45:32.159811Z[0m [32m INFO[0m dispatching message to session actor [3mchannel[0m[2m=[0mdiscord [3msender[0m[2m=[0m123456789012345678 [3msession[0m[2m=[0m_main:discord:1039178386623557770#size-limit-test
+[2m2026-04-19T09:45:32.166481Z[0m [32m INFO[0m spawned session actor [3msession[0m[2m=[0m_main:discord:1039178386623557770#size-limit-test [3mchannel[0m[2m=[0m"discord" [3mchat_id[0m[2m=[0m"1039178386623557770"
+[2m2026-04-19T09:45:32.167405Z[0m [33m WARN[0m high tool count may cause empty responses with some models; consider reducing skills (always: false) or adding a tool_policy deny list [3mtools[0m[2m=[0m29
+[2m2026-04-19T09:45:32.167546Z[0m [32m INFO[0m calling LLM [3miteration[0m[2m=[0m1 [3mmessages[0m[2m=[0m2 [3mtools[0m[2m=[0m29 [3mmessage_bytes[0m[2m=[0m11680
+[2m2026-04-19T09:45:34.193737Z[0m [33m WARN[0m failed to send status message: failed to send Discord message

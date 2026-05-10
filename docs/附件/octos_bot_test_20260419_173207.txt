@@ -1,0 +1,2929 @@
+
+── Running ALL test modules 
+
+── Running telegram tests (port 5000) 
+  ℹ  octos version: octos 0.1.1 (85d3791 2026-04-19)
+  ✅  Environment variables present
+  ✅  Python venv ready
+
+── Writing config 
+  ✅  Config written to /tmp/octos_test/.octos/test_telegram_config.json (telegram channel)
+
+── Preparing mock server 
+INFO:mock_tg:🚀 Mock Telegram server started at http://127.0.0.1:5000
+ready
+  ✅  telegram Mock server running on port 5000 (PID 46831)
+
+── Starting octos gateway 
+  ℹ  Bot PID: 46837
+
+  Waiting for gateway to start...
+INFO:mock_tg:📝 Bot registered commands: [{'command': 'new', 'description': 'Start new session or create named session'}, {'command': 's', 'description': 'Switch to a named session'}, {'command': 'sessions', 'description': 'List and switch sessions'}, {'command': 'b', 'description': 'Switch to previous session (short for /back)'}, {'command': 'back', 'description': 'Switch to previous session'}, {'command': 'd', 'description': 'Delete a named session (short for /delete)'}, {'command': 'delete', 'description': 'Delete a named session'}, {'command': 'adaptive', 'description': 'View/change adaptive routing (off|hedge|lane|qos)'}, {'command': 'queue', 'description': 'View/change queue mode (followup|collect|steer|interrupt|spec)'}, {'command': 'status', 'description': 'Configure status layers (greeting|provider|metrics|words|add|remove)'}]
+  › [2m2026-04-19T09:32:11.542565Z[0m [32m INFO[0m Telegram polling stream connected [3mlast_update_id[0m[2m=[0m0
+  ✅  Gateway ready! (telegram channel active)
+
+── Running telegram tests 
+[1m============================= test session starts ==============================[0m
+[1mcollecting ... [0mcollected 43 items
+
+tests/bot_mock_test/test_telegram.py::TestSessionCommands::test_new_default 
+======================================================================
+
+▶ START TEST: test_new_default
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/health "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (4 bytes): /new
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Session cleared....
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestSessionCommands::test_new_named 
+======================================================================
+
+▶ START TEST: test_new_named
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (9 bytes): /new work
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Switched to session: work...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestSessionCommands::test_new_invalid_name 
+======================================================================
+
+▶ START TEST: test_new_invalid_name
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (13 bytes): /new bad:name
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Invalid session name: topic name cannot contain #,...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestSessionCommands::test_switch_to_existing 
+======================================================================
+
+▶ START TEST: test_switch_to_existing
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (13 bytes): /new research
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Switched to session: research...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (11 bytes): /s research
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Switched to session: research...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestSessionCommands::test_switch_to_default 
+======================================================================
+
+▶ START TEST: test_switch_to_default
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (2 bytes): /s
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Switched to default session....
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestSessionCommands::test_sessions_list 
+======================================================================
+
+▶ START TEST: test_sessions_list
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (9 bytes): /sessions
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: <b>Sessions</b>
+
+▸ <b>cb-topic</b> — 27 msgs
+  <i>...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+
+  /sessions → <b>Sessions</b>
+
+▸ <b>cb-topic</b> — 27 msgs
+  <i>(no summary)</i>
+▸ <b>d-alias</b> — 0 msgs
+  <i>(n
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestSessionCommands::test_back_returns_session 
+======================================================================
+
+▶ START TEST: test_back_returns_session
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (5 bytes): /back
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Switched back to session: research...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+
+  /back → Switched back to session: research
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestSessionCommands::test_back_with_history 
+======================================================================
+
+▶ START TEST: test_back_with_history
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (10 bytes): /new alpha
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Switched to session: alpha...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (9 bytes): /new beta
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Switched to session: beta...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (5 bytes): /back
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Switched back to session: alpha...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestSessionCommands::test_back_alias_b 
+======================================================================
+
+▶ START TEST: test_back_alias_b
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (2 bytes): /b
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Switched back to session: beta...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestSessionCommands::test_delete_session 
+======================================================================
+
+▶ START TEST: test_delete_session
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (14 bytes): /new to-delete
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Switched to session: to-delete...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (17 bytes): /delete to-delete
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Deleted session: to-delete...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestSessionCommands::test_delete_alias_d 
+======================================================================
+
+▶ START TEST: test_delete_alias_d
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (12 bytes): /new d-alias
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Switched to session: d-alias...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (10 bytes): /d d-alias
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Deleted session: d-alias...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestSessionCommands::test_delete_no_name 
+======================================================================
+
+▶ START TEST: test_delete_no_name
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (7 bytes): /delete
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Cannot delete the default session. Use /clear to r...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+
+  /delete (no arg) → Cannot delete the default session. Use /clear to reset it.
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestSessionCommands::test_soul_show_default 
+======================================================================
+
+▶ START TEST: test_soul_show_default
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (5 bytes): /soul
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: No custom soul set. Using default....
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+
+  /soul → No custom soul set. Using default.
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestSessionCommands::test_soul_set 
+======================================================================
+
+▶ START TEST: test_soul_set
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (34 bytes): /soul You are a helpful assistant.
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Soul updated. Takes effect in new sessions....
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestSessionCommands::test_soul_reset 
+======================================================================
+
+▶ START TEST: test_soul_reset
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (11 bytes): /soul reset
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Soul reset to default. Takes effect in new session...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestSessionActorCommands::test_adaptive_no_router 
+======================================================================
+
+▶ START TEST: test_adaptive_no_router
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (9 bytes): /adaptive
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Adaptive routing is not enabled....
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestSessionActorCommands::test_queue_show 
+======================================================================
+
+▶ START TEST: test_queue_show
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (6 bytes): /queue
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Queue mode: Collect...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestSessionActorCommands::test_queue_set_followup 
+======================================================================
+
+▶ START TEST: test_queue_set_followup
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (15 bytes): /queue followup
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Queue mode set to: Followup...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestSessionActorCommands::test_queue_set_invalid 
+======================================================================
+
+▶ START TEST: test_queue_set_invalid
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (14 bytes): /queue badmode
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Unknown mode: badmode. Use: followup, collect, ste...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestSessionActorCommands::test_status_show 
+======================================================================
+
+▶ START TEST: test_status_show
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (7 bytes): /status
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: <b>Status Config</b>
+Greeting: (none)
+Provider vis...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestSessionActorCommands::test_reset_command 
+======================================================================
+
+▶ START TEST: test_reset_command
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (6 bytes): /reset
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Reset: queue=collect, adaptive=off, history cleare...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestSessionActorCommands::test_unknown_command_help 
+======================================================================
+
+▶ START TEST: test_unknown_command_help
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (11 bytes): /unknowncmd
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Unknown command. Available commands:
+/new [name] —...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestMultiUser::test_two_users_independent 
+======================================================================
+
+▶ START TEST: test_two_users_independent
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (17 bytes): /new user-a-topic
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 201: Switched to session: user-a-topic...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (17 bytes): /new user-b-topic
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 202: Switched to session: user-b-topic...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestMultiUser::test_callback_session_switch 
+======================================================================
+
+▶ START TEST: test_callback_session_switch
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (13 bytes): /new cb-topic
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Switched to session: cb-topic...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:🎯 Injected callback query: s:cb-topic
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject_callback "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (9 bytes): /sessions
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: <b>Sessions</b>
+
+▸ <b>cb-topic</b> ✦ — 27 msgs
+  <...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+
+  ✓ Callback session switch verified
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestProfileMode::test_profile_session_isolation 
+======================================================================
+
+▶ START TEST: test_profile_session_isolation
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (20 bytes): /new profile-a-topic
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 301: Switched to session: profile-a-topic...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (20 bytes): /new profile-b-topic
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 302: Switched to session: profile-b-topic...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (9 bytes): /sessions
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 301: <b>Sessions</b>
+
+▸ <b>profile-a-topic</b> ✦ — 0 ms...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestProfileMode::test_soul_per_profile 
+======================================================================
+
+▶ START TEST: test_soul_per_profile
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (35 bytes): /soul You are a professional coder.
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 301: Soul updated. Takes effect in new sessions....
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (32 bytes): /soul You are a creative writer.
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 302: Soul updated. Takes effect in new sessions....
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (5 bytes): /soul
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 301: 🪶 Current soul:
+
+You are a professional coder....
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (5 bytes): /soul
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 302: 🪶 Current soul:
+
+You are a creative writer....
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+
+  DEBUG: Profile A soul response: 🪶 Current soul:
+
+You are a professional coder.
+
+  DEBUG: Profile B soul response: 🪶 Current soul:
+
+You are a creative writer.
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestProfileMode::test_queue_mode_per_profile 
+======================================================================
+
+▶ START TEST: test_queue_mode_per_profile
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (15 bytes): /queue followup
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 301: Queue mode set to: Followup...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (6 bytes): /queue
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 302: Queue mode: Collect...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (6 bytes): /queue
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 301: Queue mode: Followup...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestMessageSplitting::test_normal_message_within_limit 
+======================================================================
+
+▶ START TEST: test_normal_message_within_limit
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (1000 bytes): BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB...
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Considering
+via anthropic (MiniMax-M2.7)...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+
+  Normal message (1000 chars) → OK
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestMessageSplitting::test_message_near_limit 
+======================================================================
+
+▶ START TEST: test_message_near_limit
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1044
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1044
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Still just B's! 😄 Let me know when you have a ques...
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1044
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1044
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1044
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1044
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (4000 bytes): CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC...
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Synthesizing
+via anthropic (MiniMax-M2.7)...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+
+  Near-limit message (4000 chars) → OK
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestAbortCommands::test_abort_chinese_stop 
+======================================================================
+
+▶ START TEST: test_abort_chinese_stop
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1045
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1045
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: C's! Got...
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1045
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1045
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1045
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1045
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (2 bytes): hi
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Hey! 👋...
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1046
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1046
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1046
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1046
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (8 bytes): 请帮我写一段代码
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: 渡劫中
+via anthropic (MiniMax-M2.7)...
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1047
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1047
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: 没问题！请告诉我：
+
+1. <b>什么语言？</b>（Python、JavaScript、TypeS...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (1 bytes): 停
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1047
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1047
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1047
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1047
+INFO:mock_tg:🤖 Bot sent message to 123: 🛑 已取消。...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+
+  Session established: Hey! 👋...
+  Task started: 渡劫中
+via anthropic (MiniMax-M2.7)...
+  ✓ Abort (停) → 🛑 已取消。
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestAbortCommands::test_abort_english_stop 
+======================================================================
+
+▶ START TEST: test_abort_english_stop
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (2 bytes): hi
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 124: Hey again! 👋 What would you like to work...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (18 bytes): Help me write code
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=124, message_id=1049
+INFO:mock_tg:✏️ Message edited successfully: chat_id=124, message_id=1049
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=124, message_id=1049
+INFO:mock_tg:✏️ Message edited successfully: chat_id=124, message_id=1049
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 124: Happy to help! Just tell me...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=124, message_id=1050
+INFO:mock_tg:✏️ Message edited successfully: chat_id=124, message_id=1050
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (4 bytes): stop
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=124, message_id=1050
+INFO:mock_tg:✏️ Message edited successfully: chat_id=124, message_id=1050
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=124, message_id=1050
+INFO:mock_tg:✏️ Message edited successfully: chat_id=124, message_id=1050
+INFO:mock_tg:🤖 Bot sent message to 124: 🛑 Cancelled....
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+
+  Session established: Hey again! 👋 What would you like to work...
+  Task started: Happy to help! Just tell me...
+  ✓ Abort (stop) → 🛑 Cancelled.
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestAbortCommands::test_abort_english_cancel 
+======================================================================
+
+▶ START TEST: test_abort_english_cancel
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (6 bytes): cancel
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: 🛑 Cancelled....
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+
+  ✓ Abort (cancel) → 🛑 Cancelled.
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestAbortCommands::test_abort_japanese 
+======================================================================
+
+▶ START TEST: test_abort_japanese
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (3 bytes): やめて
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: 🛑 キャンセルしました。...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+
+  ✓ Abort (やめて) → 🛑 キャンセルしました。
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestAbortCommands::test_abort_russian 
+======================================================================
+
+▶ START TEST: test_abort_russian
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (4 bytes): стоп
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: 🛑 Отменено....
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+
+  ✓ Abort (стоп) → 🛑 Отменено.
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestAbortCommands::test_abort_case_insensitive 
+======================================================================
+
+▶ START TEST: test_abort_case_insensitive
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (4 bytes): STOP
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: 🛑 Cancelled....
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (4 bytes): Stop
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: 🛑 Cancelled....
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (6 bytes): CANCEL
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: 🛑 Cancelled....
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (6 bytes): Cancel
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: 🛑 Cancelled....
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+
+  ✓ Case insensitive abort works
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestAbortCommands::test_abort_with_whitespace 
+======================================================================
+
+▶ START TEST: test_abort_with_whitespace
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (8 bytes):   stop  
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: 🛑 Cancelled....
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (6 bytes): 	stop
+
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: 🛑 Cancelled....
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (3 bytes):  停 
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: 🛑 已取消。...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+
+  ✓ Whitespace handling works
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestAbortCommands::test_non_abort_messages_not_triggered 
+======================================================================
+
+▶ START TEST: test_non_abort_messages_not_triggered
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (30 bytes): please stop talking about cats
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (22 bytes): stopping point is here
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (15 bytes): I will exit now
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+
+  ✓ Non-abort messages handled correctly
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestConcurrencyLimit::test_concurrent_session_creation 
+======================================================================
+
+▶ START TEST: test_concurrent_session_creation
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Formulating
+via anthropic (MiniMax-M2.7)...
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1064
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1064
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1064
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1064
+INFO:mock_tg:🤖 Bot sent message to 123: I haven't mentioned...
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1064
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1064
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1064
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1064
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (17 bytes): /new concurrent-4
+INFO:mock_tg:💬 Injected message (17 bytes): /new concurrent-2
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (17 bytes): /new concurrent-0
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (17 bytes): /new concurrent-7
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (17 bytes): /new concurrent-3
+INFO:mock_tg:💬 Injected message (17 bytes): /new concurrent-5
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (17 bytes): /new concurrent-1
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (17 bytes): /new concurrent-6
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (17 bytes): /new concurrent-9
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (17 bytes): /new concurrent-8
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 504: Switched to session: concurrent-4...
+INFO:mock_tg:🤖 Bot sent message to 502: Switched to session: concurrent-2...
+INFO:mock_tg:🤖 Bot sent message to 500: Switched to session: concurrent-0...
+INFO:mock_tg:🤖 Bot sent message to 507: Switched to session: concurrent-7...
+INFO:mock_tg:🤖 Bot sent message to 503: Switched to session: concurrent-3...
+INFO:mock_tg:🤖 Bot sent message to 505: Switched to session: concurrent-5...
+INFO:mock_tg:🤖 Bot sent message to 501: Switched to session: concurrent-1...
+INFO:mock_tg:🤖 Bot sent message to 506: Switched to session: concurrent-6...
+INFO:mock_tg:🤖 Bot sent message to 509: Switched to session: concurrent-9...
+INFO:mock_tg:🤖 Bot sent message to 508: Switched to session: concurrent-8...
+INFO:mock_tg:🤖 Bot sent message to 123: Contemplating
+via anthropic (MiniMax-M2.7)...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+
+  Concurrent sessions: 10
+  Elapsed time: 1.07s
+  Successful: 10
+  Errors: 0
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestFileLimits::test_large_message_handling 
+======================================================================
+
+▶ START TEST: test_large_message_handling
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Got it, take care! 👋...
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1074
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1074
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1074
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1074
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (1048576 bytes): AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Deliberating
+via anthropic (MiniMax-M2.7)...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+
+  Sending 1.0MB single message...
+  Response received in 3.08s
+  Response length: 41 chars
+  ✓ octos handled 1.0MB message successfully
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestFileLimits::test_session_accumulation_stability 
+======================================================================
+
+▶ START TEST: test_session_accumulation_stability
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1075
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1075
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1075
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1075
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1075
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1075
+INFO:mock_tg:🤖 Bot sent message to 123: Hey! That's a lot of As 😄 Is there something I can...
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1075
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1075
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (102391 bytes): Message 1: BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB...
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1075
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1075
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Evaluating
+via anthropic (MiniMax-M2.7)...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (102391 bytes): Message 2: BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB...
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1076
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1076
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Got it, still here when you need me! 👋...
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1077
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1077
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (102391 bytes): Message 3: BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB...
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1077
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1077
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Composing
+via anthropic (MiniMax-M2.7)...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (102391 bytes): Message 4: BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB...
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1078
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1078
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1078
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1078
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Still just B's! 😄 I'm here when you need me....
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1079
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1079
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (102391 bytes): Message 5: BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB...
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1079
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1079
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Reasoning
+via anthropic (MiniMax-M2.7)...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (102391 bytes): Message 6: BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB...
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1080
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1080
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1080
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1080
+INFO:mock_tg:🤖 Bot sent message to 123: B's confirmed! 😄...
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1081
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1081
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (102391 bytes): Message 7: BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB...
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1081
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1081
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Assembling
+via anthropic (MiniMax-M2.7)...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1082
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1082
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (102391 bytes): Message 8: BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB...
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1082
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1082
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1082
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1082
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1082
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1082
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1082
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1082
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Got it! 😄...
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1083
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1083
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (102391 bytes): Message 9: BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB...
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1083
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1083
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Connecting
+via anthropic (MiniMax-M2.7)...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1084
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1084
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (102392 bytes): Message 10: BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB...
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1084
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1084
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1084
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1084
+INFO:mock_tg:🤖 Bot sent message to 123: 
+
+Still just B's! 😄...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (4 bytes): Test
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1085
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1085
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1085
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1085
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Weaving
+via anthropic (MiniMax-M2.7)...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+
+  Accumulating 10 messages of 100KB each...
+  Total: ~1.0MB
+  ✓ Session stable after 10 messages (1.0MB total)
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestFileLimits::test_session_file_size_limit_enforcement 
+======================================================================
+
+▶ START TEST: test_session_file_size_limit_enforcement
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (20 bytes): /new size-limit-test
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 999: Switched to session: size-limit-test...
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (8 bytes): tiny msg
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 999: Distilling
+via anthropic (MiniMax-M2.7)...
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+  Pre-filled session file: 9.57MB at /tmp/octos_test/users/_main%3Atelegram%3A999/sessions/size-limit-test.jsonl
+  After append attempt: 9.57MB, grew 0 bytes
+  ✓ Append skipped correctly — session file stayed at 9.57MB
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestLLMMessages::test_regular_message 
+======================================================================
+
+▶ START TEST: test_regular_message
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (4 bytes): /new
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Session cleared....
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=999, message_id=1088
+INFO:mock_tg:✏️ Message edited successfully: chat_id=999, message_id=1088
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=999, message_id=1088
+INFO:mock_tg:✏️ Message edited successfully: chat_id=999, message_id=1088
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 999: Hi! Your message came through — what can I help yo...
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=999, message_id=1089
+INFO:mock_tg:✏️ Message edited successfully: chat_id=999, message_id=1089
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=999, message_id=1089
+INFO:mock_tg:✏️ Message edited successfully: chat_id=999, message_id=1089
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (6 bytes): Hello!
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1086
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1086
+INFO:mock_tg:🤖 Bot sent message to 123: ⟳ Retrying (1/4)... empty response (no content/too...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+
+  ✓ English message → ⟳ Retrying (1/4)... empty response (no content/too...
+[32mPASSED[0m
+tests/bot_mock_test/test_telegram.py::TestLLMMessages::test_chinese_message 
+======================================================================
+
+▶ START TEST: test_chinese_message
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (4 bytes): /new
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: Session cleared....
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1090
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1090
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1090
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1090
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:💬 Injected message (2 bytes): 你好
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5000/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:✏️ Edit request received - method=POST, url=http://127.0.0.1:5000/bot8326351014:AAGOflHK3ipUt2udWSkoF0YiM0zpFylcH7s/EditMessageText
+INFO:mock_tg:✏️ Parsed as JSON: chat_id=123, message_id=1090
+INFO:mock_tg:✏️ Message edited successfully: chat_id=123, message_id=1090
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_tg:🤖 Bot sent message to 123: 在卷了
+via anthropic (MiniMax-M2.7)...
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5000/_sent_messages "HTTP/1.1 200 OK"
+
+  ✓ Chinese message → 在卷了
+via anthropic (MiniMax-M2.7)...
+[32mPASSED[0m
+
+[32m======================== [32m[1m43 passed[0m[32m in 422.99s (0:07:02)[0m[32m ========================[0m
+
+── Cleanup 
+  ✅  Processes stopped
+
+  🎉 All telegram tests passed!
+
+
+── Running discord tests (port 5001) 
+  ℹ  octos version: octos 0.1.1 (85d3791 2026-04-19)
+  ℹ  DISCORD_BOT_TOKEN not set, using dummy value (mock mode)
+  ✅  Environment variables present
+  ✅  Python venv ready
+
+── Writing config 
+  ✅  Config written to /tmp/octos_test/.octos/test_discord_config.json (discord channel)
+
+── Preparing mock server 
+INFO:mock_discord:🚀 Mock Discord server started at http://127.0.0.1:5001 (WS at same address)
+ready
+  ✅  discord Mock server running on port 5001 (PID 47388)
+
+── Starting octos gateway 
+  ℹ  Bot PID: 47400
+
+  Waiting for gateway to start...
+INFO:mock_discord:=== GATEWAY CALLED === returning ws URL
+INFO:mock_discord:=== WS CLIENT CONNECTING ===
+INFO:mock_discord:=== WS CLIENT ACCEPTED ===
+INFO:mock_discord:WS: Sent HELLO
+INFO:mock_discord:WS: Received IDENTIFY, sending READY
+  › [2m2026-04-19T09:39:19.172923Z[0m [32m INFO[0m Discord bot connected [3muser[0m[2m=[0mTestBot
+  ✅  Gateway ready! (discord channel active)
+
+── Running discord tests 
+[1m============================= test session starts ==============================[0m
+[1mcollecting ... [0mcollected 46 items
+
+tests/bot_mock_test/test_discord.py::TestDiscordSessionCommands::test_new_default 
+======================================================================
+
+▶ START TEST: test_new_default
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/health "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (4 bytes): /new
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Session cleared.
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordSessionCommands::test_new_named 
+======================================================================
+
+▶ START TEST: test_new_named
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (9 bytes): /new work
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Switched to session: work
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordSessionCommands::test_new_invalid_name 
+======================================================================
+
+▶ START TEST: test_new_invalid_name
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (13 bytes): /new bad:name
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Invalid session name: topic name cannot contain #, :, or /
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordSessionCommands::test_switch_to_existing 
+======================================================================
+
+▶ START TEST: test_switch_to_existing
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (13 bytes): /new research
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Switched to session: research
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (11 bytes): /s research
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Switched to session: research
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordSessionCommands::test_switch_to_default 
+======================================================================
+
+▶ START TEST: test_switch_to_default
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (2 bytes): /s
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Switched to default session.
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordSessionCommands::test_sessions_list 
+======================================================================
+
+▶ START TEST: test_sessions_list
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (9 bytes): /sessions
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: **Sessions**
+
+▸ **profile-a** — 0 msgs
+  _(no summary)_
+▸ **concurrent-0** — 4 m
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+
+  /sessions → **Sessions**
+
+▸ **profile-a** — 0 msgs
+  _(no summary)_
+▸ **concurrent-0** — 4 msgs
+  _(no summary)_
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordSessionCommands::test_back_returns_session 
+======================================================================
+
+▶ START TEST: test_back_returns_session
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (5 bytes): /back
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Switched back to session: research
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+
+  /back → Switched back to session: research
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordSessionCommands::test_back_with_history 
+======================================================================
+
+▶ START TEST: test_back_with_history
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (17 bytes): /new history-test
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Switched to session: history-test
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (5 bytes): /back
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Switched back to session: research
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordSessionCommands::test_delete_session 
+======================================================================
+
+▶ START TEST: test_delete_session
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (14 bytes): /new to-delete
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Switched to session: to-delete
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (17 bytes): /delete to-delete
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Deleted session: to-delete
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordSessionCommands::test_delete_no_name 
+======================================================================
+
+▶ START TEST: test_delete_no_name
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (7 bytes): /delete
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Cannot delete the default session. Use /clear to reset it.
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordSessionCommands::test_soul_show 
+======================================================================
+
+▶ START TEST: test_soul_show
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (5 bytes): /soul
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: No custom soul set. Using default.
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+
+  /soul → No custom soul set. Using default.
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordSessionCommands::test_soul_set 
+======================================================================
+
+▶ START TEST: test_soul_set
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (22 bytes): /soul You are helpful.
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Soul updated. Takes effect in new sessions.
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordSessionCommands::test_back_alias_b 
+======================================================================
+
+▶ START TEST: test_back_alias_b
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (2 bytes): /b
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Switched back to session: research
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordSessionCommands::test_delete_alias_d 
+======================================================================
+
+▶ START TEST: test_delete_alias_d
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (17 bytes): /new temp-session
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Switched to session: temp-session
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (15 bytes): /d temp-session
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Deleted session: temp-session
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordSessionCommands::test_soul_reset 
+======================================================================
+
+▶ START TEST: test_soul_reset
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (17 bytes): /soul Custom soul
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Soul updated. Takes effect in new sessions.
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (11 bytes): /soul reset
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Soul reset to default. Takes effect in new sessions.
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordSessionActorCommands::test_adaptive_show 
+======================================================================
+
+▶ START TEST: test_adaptive_show
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (9 bytes): /adaptive
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Adaptive routing is not enabled.
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordSessionActorCommands::test_queue_show 
+======================================================================
+
+▶ START TEST: test_queue_show
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (6 bytes): /queue
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Queue mode: Collect
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordSessionActorCommands::test_queue_set_followup 
+======================================================================
+
+▶ START TEST: test_queue_set_followup
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (15 bytes): /queue followup
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Queue mode set to: Followup
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordSessionActorCommands::test_queue_set_invalid 
+======================================================================
+
+▶ START TEST: test_queue_set_invalid
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (14 bytes): /queue badmode
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Unknown mode: badmode. Use: followup, collect, steer, interrupt, spec
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordSessionActorCommands::test_status_show 
+======================================================================
+
+▶ START TEST: test_status_show
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (7 bytes): /status
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: **Status Config**
+Greeting: (none)
+Provider visible: true
+Metrics visible: true
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordSessionActorCommands::test_reset_command 
+======================================================================
+
+▶ START TEST: test_reset_command
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (6 bytes): /reset
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Reset: queue=collect, adaptive=off, history cleared.
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordSessionActorCommands::test_unknown_command_help 
+======================================================================
+
+▶ START TEST: test_unknown_command_help
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (11 bytes): /unknowncmd
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Unknown command. Available commands:
+/new [name] — start a new session
+/s [name]
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordMultiUser::test_two_channels_independent 
+======================================================================
+
+▶ START TEST: test_two_channels_independent
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (12 bytes): /new topic-a
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Switched to session: topic-a
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (12 bytes): /new topic-b
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 200000000000000001: Switched to session: topic-b
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordLLMMessages::test_regular_message 
+======================================================================
+
+▶ START TEST: test_regular_message
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (4 bytes): /new
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Session cleared.
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (6 bytes): Hello!
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Considering
+via anthropic (MiniMax-M2.7)
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordLLMMessages::test_chinese_message 
+======================================================================
+
+▶ START TEST: test_chinese_message
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (4 bytes): /new
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Session cleared.
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Hello again! 👋 How can I help you today?
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Hello again! 👋 How can I help you today?
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Hello again! 👋 How can I help you today?
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Hello again! 👋 How can I help you today?
+
+_anthropic/MiniMax-M2.7 · 9.9K in · 32
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (2 bytes): 你好
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: 疯狂输出中
+via anthropic (MiniMax-M2.7)
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordSessionIsolation::test_two_users_independent 
+======================================================================
+
+▶ START TEST: test_two_users_independent
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: 你好！😊 有什么我可以帮你的吗？
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: 你好！😊 有什么我可以帮你的吗？
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: 你好！😊 有什么我可以帮你的吗？
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: 你好！😊 有什么我可以帮你的吗？
+
+_anthropic/MiniMax-M2.7 · 99 in · 62 out · 2s_
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (18 bytes): /new user1-session
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Switched to session: user1-session
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (18 bytes): /new user2-session
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557755: Switched to session: user2-session
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (9 bytes): /sessions
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: **Sessions**
+
+▸ **profile-a** — 0 msgs
+  _(no summary)_
+▸ **concurrent-0** — 4 m
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (9 bytes): /sessions
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557755: **Sessions**
+
+▸ **profile-b** — 0 msgs
+  _(no summary)_
+▸ **concurrent-1** — 4 m
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordMessageSplitting::test_normal_message_within_limit 
+======================================================================
+
+▶ START TEST: test_normal_message_within_limit
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (1000 bytes): BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557765: Pondering
+via anthropic (MiniMax-M2.7)
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557765: Pondering
+via anthropic (MiniMax-M2.7)
+3s
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+
+  Normal message (1000 chars) → OK
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordMessageSplitting::test_message_near_limit 
+======================================================================
+
+▶ START TEST: test_message_near_limit
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557765: Still just "
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557765: Still just "B"s! 😄 Let me know what you need — I'm here whenever you're ready.
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557765: Still just "B"s! 😄 Let me know what you need — I'm here whenever you're ready.
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557765: Still just "B"s! 😄 Let me know what you need — I'm here whenever you're ready.
+
+
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (1800 bytes): CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557766: Reflecting
+via anthropic (MiniMax-M2.7)
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+
+  Near-limit message (1800 chars) → OK
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordMessageSplitting::test_long_response_split 
+======================================================================
+
+▶ START TEST: test_long_response_split
+
+
+======================================================================
+
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557766: Reflecting
+via anthropic (MiniMax-M2.7)
+3s
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557766: Reflecting
+via anthropic (MiniMax-M2.7)
+4s
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557766: That's
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557766: That's a lot of Cs! 😄
+
+Is there something I can help you with? Feel free to ask 
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557766: That's a lot of Cs! 😄
+
+Is there something I can help you with? Feel free to ask 
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557766: That's a lot of Cs! 😄
+
+Is there something I can help you with? Feel free to ask 
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (83 bytes): Please write a detailed explanation of Python deco
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Analyzing
+via anthropic (MiniMax-M2.7)
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: # Python Decorators: The
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: # Python Decorators: The Complete Guide
+
+## Introduction
+
+Python decorators are 
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+
+  Sent 3 message(s) for long response
+  ✓ Message splitting works: 3 parts
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordNewCommand::test_new_creates_session 
+======================================================================
+
+▶ START TEST: test_new_creates_session
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: # Python Decorators: The Complete Guide
+
+## Introduction
+
+Python decorators are 
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: # Python Decorators: The Complete Guide
+
+## Introduction
+
+Python decorators are 
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: # Python Decorators: The Complete Guide
+
+## Introduction
+
+Python decorators are 
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: # Python Decorators: The Complete Guide
+
+## Introduction
+
+Python decorators are 
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: # Python Decorators: The Complete Guide
+
+## Introduction
+
+Python decorators are 
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (4 bytes): /new
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Session cleared.
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordNewCommand::test_new_named_session 
+======================================================================
+
+▶ START TEST: test_new_named_session
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (12 bytes): /new my-test
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Switched to session: my-test
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordConcurrencyLimit::test_concurrent_session_creation 
+======================================================================
+
+▶ START TEST: test_concurrent_session_creation
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (17 bytes): /new concurrent-4
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (17 bytes): /new concurrent-8
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (17 bytes): /new concurrent-5
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (17 bytes): /new concurrent-0
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (17 bytes): /new concurrent-1
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (17 bytes): /new concurrent-7
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557758: Switched to session: concurrent-4
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (17 bytes): /new concurrent-2
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557762: Switched to session: concurrent-8
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Switched to session: concurrent-0
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (17 bytes): /new concurrent-3
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (17 bytes): /new concurrent-6
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557759: Switched to session: concurrent-5
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (17 bytes): /new concurrent-9
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557755: Switched to session: concurrent-1
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557761: Switched to session: concurrent-7
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557756: Switched to session: concurrent-2
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557757: Switched to session: concurrent-3
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557760: Switched to session: concurrent-6
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557763: Switched to session: concurrent-9
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+
+  Concurrent sessions: 10
+  Elapsed time: 1.08s
+  Successful: 10
+  Errors: 0
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordAbortCommands::test_abort_english_stop 
+======================================================================
+
+▶ START TEST: test_abort_english_stop
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (2 bytes): hi
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Processing
+via anthropic (MiniMax-M2.7)
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (18 bytes): Help me write code
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Hey! 👋 Still here to
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Hey! 👋 Still here to help with your code. What are you working on?
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Hey! 👋 Still here to help with your code. What are you working on?
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Hey! 👋 Still here to help with your code. What are you working on?
+
+_anthropic/M
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (4 bytes): stop
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Ready to help! Tell
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Ready to help! Tell me more about what you want to build:
+
+1. **Language** — Pyt
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Ready to help! Tell me more about what you want to build:
+
+1. **Language** — Pyt
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Ready to help! Tell me more about what you want to build:
+
+1. **Language** — Pyt
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Ready to help! Tell me more about what you want to build:
+
+1. **Language** — Pyt
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: 🛑 Cancelled.
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+
+  Session established: Processing
+via anthropic (MiniMax-M2.7)...
+  Task started: Hey! 👋 Still here to...
+  ✓ Abort (stop) → 🛑 Cancelled.
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordAbortCommands::test_abort_english_cancel 
+======================================================================
+
+▶ START TEST: test_abort_english_cancel
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: 📌 user1-session finished. /s user1-session to view.
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (2 bytes): hi
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557755: Contemplating
+via anthropic (MiniMax-M2.7)
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (50 bytes): Write a comprehensive function with error handling
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557755: Hey! 👋 Ready to help whenever you'd like to share the language
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557755: Hey! 👋 Ready to help whenever you'd like to share the language and purpose for t
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557755: Hey! 👋 Ready to help whenever you'd like to share the language and purpose for t
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557755: Hey! 👋 Ready to help whenever you'd like to share the language and purpose for t
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (6 bytes): cancel
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557755: Deliberating
+via anthropic (MiniMax-M2.7)
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557755: Deliberating
+via anthropic (MiniMax-M2.7)
+3s
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557755: Here's a comprehensive Python function
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557755: Here's a comprehensive Python function with robust error handling — a **retry-en
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557755: Here's a comprehensive Python function with robust error handling — a **retry-en
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557755: Here's a comprehensive Python function with robust error handling — a **retry-en
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557755: Here's a comprehensive Python function with robust error handling — a **retry-en
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557755: Here's a comprehensive Python function with robust error handling — a **retry-en
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557755: Here's a comprehensive Python function with robust error handling — a **retry-en
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+  Task started: Hey! 👋 Ready to help whenever you'd like to share ...
+[31mFAILED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordAbortCommands::test_abort_chinese_stop 
+======================================================================
+
+▶ START TEST: test_abort_chinese_stop
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (2 bytes): hi
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557756: Evaluating
+via anthropic (MiniMax-M2.7)
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (12 bytes): 请给我写一篇200字小说
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557756: Hey! 👋 有什么我可以帮你的吗？
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557756: Hey! 👋 有什么我可以帮你的吗？
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557756: Hey! 👋 有什么我可以帮你的吗？
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557756: Hey! 👋 有什么我可以帮你的吗？
+
+_anthropic/MiniMax-M2.7 · 10.0K in · 32 out · 2s_
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (1 bytes): 停
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557756: 起飞中
+via anthropic (MiniMax-M2.7)
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557756: # 消失的咖啡杯
+
+她每天下午三点都会来这家咖啡馆，点一杯美式，坐在靠窗的位置。
+
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557756: # 消失的咖啡杯
+
+她每天下午三点都会来这家咖啡馆，点一杯美式，坐在靠窗的位置。
+
+他注意到她已经三十七天了。
+
+第三十八天，她没有来。
+
+第四十天，一个陌生男
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557756: # 消失的咖啡杯
+
+她每天下午三点都会来这家咖啡馆，点一杯美式，坐在靠窗的位置。
+
+他注意到她已经三十七天了。
+
+第三十八天，她没有来。
+
+第四十天，一个陌生男
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557756: # 消失的咖啡杯
+
+她每天下午三点都会来这家咖啡馆，点一杯美式，坐在靠窗的位置。
+
+他注意到她已经三十七天了。
+
+第三十八天，她没有来。
+
+第四十天，一个陌生男
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557756: # 消失的咖啡杯
+
+她每天下午三点都会来这家咖啡馆，点一杯美式，坐在靠窗的位置。
+
+他注意到她已经三十七天了。
+
+第三十八天，她没有来。
+
+第四十天，一个陌生男
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557756: # 消失的咖啡杯
+
+她每天下午三点都会来这家咖啡馆，点一杯美式，坐在靠窗的位置。
+
+他注意到她已经三十七天了。
+
+第三十八天，她没有来。
+
+第四十天，一个陌生男
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557756: # 消失的咖啡杯
+
+她每天下午三点都会来这家咖啡馆，点一杯美式，坐在靠窗的位置。
+
+他注意到她已经三十七天了。
+
+第三十八天，她没有来。
+
+第四十天，一个陌生男
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557756: # 消失的咖啡杯
+
+她每天下午三点都会来这家咖啡馆，点一杯美式，坐在靠窗的位置。
+
+他注意到她已经三十七天了。
+
+第三十八天，她没有来。
+
+第四十天，一个陌生男
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557756: 🛑 已取消。
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+  Task started: Hey! 👋 有什么我可以帮你的吗？
+
+_anthropic/MiniMax-M2.7 · 10.0...
+  ✓ Abort (停) → 🛑 已取消。
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordAbortCommands::test_abort_case_insensitive 
+======================================================================
+
+▶ START TEST: test_abort_case_insensitive
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (2 bytes): hi
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557755: Here's a comprehensive Python function with robust error handling — a **retry-en
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557755: 🛑 Cancelled.
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (4 bytes): Task
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557757: Reasoning
+via anthropic (MiniMax-M2.7)
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557757: Hey! 👋 Welcome back. What can I do for you?
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557757: Hey! 👋 Welcome back. What can I do for you?
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557757: Hey! 👋 Welcome back. What can I do for you?
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557757: Hey! 👋 Welcome back. What can I do for you?
+
+_anthropic/MiniMax-M2.7 · 10.0K in 
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (4 bytes): STOP
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557757: Assembling
+via anthropic (MiniMax-M2.7)
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557757: It looks like you're referring to a task, but I need a bit more detail! 😄
+
+Could
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557757: It looks like you're referring to a task, but I need a bit more detail! 😄
+
+Could
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557757: It looks like you're referring to a task, but I need a bit more detail! 😄
+
+Could
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557757: It looks like you're referring to a task, but I need a bit more detail! 😄
+
+Could
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557757: It looks like you're referring to a task, but I need a bit more detail! 😄
+
+Could
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557757: It looks like you're referring to a task, but I need a bit more detail! 😄
+
+Could
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557757: 🛑 Cancelled.
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+  Task started: Reasoning
+via anthropic (MiniMax-M2.7)...
+  ✓ Abort (STOP uppercase) → 🛑 Cancelled.
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordAbortCommands::test_abort_with_whitespace 
+======================================================================
+
+▶ START TEST: test_abort_with_whitespace
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (8 bytes):   stop  
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557764: 🛑 Cancelled.
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (6 bytes): 	stop
+
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557764: 🛑 Cancelled.
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (3 bytes):  停 
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557764: 🛑 已取消。
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+
+  ✓ Whitespace handling works
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordAbortCommands::test_abort_japanese 
+======================================================================
+
+▶ START TEST: test_abort_japanese
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (3 bytes): やめて
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557767: 🛑 キャンセルしました。
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+  ✓ Abort (やめて) → 🛑 キャンセルしました。
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordAbortCommands::test_abort_russian 
+======================================================================
+
+▶ START TEST: test_abort_russian
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (4 bytes): стоп
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557768: 🛑 Отменено.
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+  ✓ Abort (стоп) → 🛑 Отменено.
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordAbortCommands::test_non_abort_messages_not_triggered 
+======================================================================
+
+▶ START TEST: test_non_abort_messages_not_triggered
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (30 bytes): please stop talking about cats
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (22 bytes): stopping point is here
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+
+  ✓ Non-abort messages handled correctly
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordProfileMode::test_profile_session_isolation 
+======================================================================
+
+▶ START TEST: test_profile_session_isolation
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557769: Connecting
+via anthropic (MiniMax-M2.7)
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557769: Understood — no cats, now or later. What would
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557769: Understood — no cats, now or later. What would you like to work on?
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557769: Understood — no cats, now or later. What would you like to work on?
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557769: Understood — no cats, now or later. What would you like to work on?
+
+_anthropic/
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557769: Weaving
+via anthropic (MiniMax-M2.7)
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557769: Noted. I'm ready when you are.
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557769: Noted. I'm ready when you are.
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557769: Noted. I'm ready when you are.
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557769: Noted. I'm ready when you are.
+
+_anthropic/MiniMax-M2.7 · 125 in · 37 out · 2s_
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (14 bytes): /new profile-a
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: Switched to session: profile-a
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (14 bytes): /new profile-b
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557755: Switched to session: profile-b
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (9 bytes): /sessions
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557754: **Sessions**
+
+▸ **profile-a** ✦ — 0 msgs
+  _(no summary)_
+▸ **concurrent-0** — 8
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (9 bytes): /sessions
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557755: **Sessions**
+
+▸ **profile-b** ✦ — 0 msgs
+  _(no summary)_
+▸ **concurrent-1** — 8
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordProfileMode::test_soul_per_profile 
+======================================================================
+
+▶ START TEST: test_soul_per_profile
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (29 bytes): /soul You are a coding expert
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557758: Soul updated. Takes effect in new sessions.
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (31 bytes): /soul You are a creative writer
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557759: Soul updated. Takes effect in new sessions.
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (5 bytes): /soul
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557758: 🪶 Current soul:
+
+You are a coding expert
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (5 bytes): /soul
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557759: 🪶 Current soul:
+
+You are a creative writer
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordProfileMode::test_queue_mode_per_profile 
+======================================================================
+
+▶ START TEST: test_queue_mode_per_profile
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (15 bytes): /queue followup
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557762: Queue mode set to: Followup
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (6 bytes): /queue
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557763: Queue mode: Collect
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (6 bytes): /queue
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557762: Queue mode: Followup
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordFileLimits::test_large_message_handling 
+======================================================================
+
+▶ START TEST: test_large_message_handling
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (1800 bytes): AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557760: Distilling
+via anthropic (MiniMax-M2.7)
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+
+  ✓ Large message handled: 39 chars response
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordFileLimits::test_session_accumulation_stability 
+======================================================================
+
+▶ START TEST: test_session_accumulation_stability
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557760: Looks like another stress test! 🚀
+
+Is there something
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557760: Looks like another stress test! 🚀
+
+Is there something specific I can help you wi
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557760: Looks like another stress test! 🚀
+
+Is there something specific I can help you wi
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557760: Looks like another stress test! 🚀
+
+Is there something specific I can help you wi
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (9 bytes): Message 1
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557761: Considering
+via anthropic (MiniMax-M2.7)
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (9 bytes): Message 2
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557761: Considering
+via anthropic (MiniMax-M2.7)
+3s
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (9 bytes): Message 3
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557761: I'm still receiving placeholder messages. Could you tell me what you'd like help
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (9 bytes): Message 4
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557761: I'm still receiving placeholder messages. Could you tell me what you'd like help
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557761: I'm still receiving placeholder messages. Could you tell me what you'd like help
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557761: I'm still receiving placeholder messages. Could you tell me what you'd like help
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (9 bytes): Message 5
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557761: I'm
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (9 bytes): /sessions
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557761: **Sessions**
+
+▸ **concurrent-7** ✦ — 6 msgs
+  _(no summary)_
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557761: I'm still seeing placeholder messages. Could you please send your actual questio
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557761: I'm still seeing placeholder messages. Could you please send your actual questio
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557761: I'm still seeing placeholder messages. Could you please send your actual questio
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557761: I'm still seeing placeholder messages. Could you please send your actual questio
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+
+  ✓ Session stable after 5 messages
+[32mPASSED[0m
+tests/bot_mock_test/test_discord.py::TestDiscordFileLimits::test_session_file_size_limit_enforcement 
+======================================================================
+
+▶ START TEST: test_session_file_size_limit_enforcement
+
+
+======================================================================
+
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557761: Pondering
+via anthropic (MiniMax-M2.7)
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557761: It looks like you're sending placeholder text (
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557761: It looks like you're sending placeholder text (like "Message 1", "Message 5"). 
+
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557761: It looks like you're sending placeholder text (like "Message 1", "Message 5"). 
+
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557761: It looks like you're sending placeholder text (like "Message 1", "Message 5"). 
+
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557761: It looks like you're sending placeholder text (like "Message 1", "Message 5"). 
+
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (20 bytes): /new size-limit-test
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557770: Switched to session: size-limit-test
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🔄 Dispatched MESSAGE_CREATE (8 bytes): tiny msg
+INFO:httpx:HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+INFO:mock_discord:🤖 Bot sent message to 1039178386623557770: Reflecting
+via anthropic (MiniMax-M2.7)
+INFO:httpx:HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+  Pre-filled session file: 9.57MB at /tmp/octos_test/users/_main%3Adiscord%3A1039178386623557770/sessions/size-limit-test.jsonl
+  After append attempt: 9.57MB, grew 0 bytes
+  ✓ Append skipped correctly — session file stayed at 9.57MB
+[32mPASSED[0m
+
+=================================== FAILURES ===================================
+[31m[1m______________ TestDiscordAbortCommands.test_abort_english_cancel ______________[0m
+[1m[31mtests/bot_mock_test/test_discord.py[0m:518: in test_abort_english_cancel
+    [0m[94massert[39;49;00m abort_reply [95mis[39;49;00m [95mnot[39;49;00m [94mNone[39;49;00m, [33m"[39;49;00m[33mBot did not respond to cancel command with cancel response[39;49;00m[33m"[39;49;00m[90m[39;49;00m
+[1m[31mE   AssertionError: Bot did not respond to cancel command with cancel response[0m
+[1m[31mE   assert None is not None[0m
+------------------------------ Captured log setup ------------------------------
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST http://127.0.0.1:5001/_clear "HTTP/1.1 200 OK"
+------------------------------ Captured log call -------------------------------
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST http://127.0.0.1:5001/_inject "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:5001/_sent_messages "HTTP/1.1 200 OK"
+[36m[1m=========================== short test summary info ============================[0m
+[31mFAILED[0m tests/bot_mock_test/test_discord.py::[1mTestDiscordAbortCommands::test_abort_english_cancel[0m - AssertionError: Bot did not respond to cancel command with cancel response
+[31m=================== [31m[1m1 failed[0m, [32m45 passed[0m[31m in 373.94s (0:06:13)[0m[31m ===================[0m
+
+── Cleanup 
+  ✅  Processes stopped
+
+  💥 Some discord tests failed
+  Bot log: /tmp/octos_test/logs/octos_discord_bot_test.log
+
+  💥 Some modules failed
